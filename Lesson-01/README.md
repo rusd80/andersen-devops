@@ -2,14 +2,14 @@
 My name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation engineer with 15 years of experience. I'm interested in computer science,
 programming and management methodologies such as LEAN and Kanban.
 At now become DevOPS engineer employee is my dream and strong challenge. 
-### Why i'm interested in this course:
+### Why I'm interested in this course:
 ```
-ngrok by @inconshreveable                                       (Ctrl+C to quit)
 1. Get an actual knowledges                                                                           
-2. Improve my skills in DevOPS instruments and philosophu. 
-3.                                                                
+2. Improve my skills in DevOPS instruments and philosophy. 
+3. Andersen is top IT company.                                                               
 ```
-## What i'm waiting from this course:
+
+### What I'm waiting from this course:
 
 ```
 1. Get a lot of knowlenge.

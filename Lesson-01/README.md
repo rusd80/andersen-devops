@@ -1,10 +1,13 @@
 ### About myself:
 
-My name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation engineer with 15 years of experience. I'm interested in computer science,
+My name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation engineer with 15 years 
+of experience with programming of programmable-logic controllers 
+and human-machine interface devices. I'm interested in computer science,
 programming and management methodologies such as LEAN and Kanban.
+I'm currently learning Linux administration, Docker and Kubernetes.
 At now become DevOps engineer employee is my dream and challenge. 
 
-### Why I'm interested in this course:
+### Why am I interested in this course?:
 
 ```
 1. I would improve my skills and knowledge in DevOps instruments and philosophy. 
@@ -12,10 +15,10 @@ At now become DevOps engineer employee is my dream and challenge.
 3. It's cool, because Andersen is a top IT company.                                                               
 ```
 
-### What I'm waiting from this course:
+### What do I expect from this course?:
 
 ```
-1. Get a lot of relevant knowlenge.
+1. Get a lot of relevant expirience.
 2. Join to community of DevOps students an professionals.
 3. Take a chance to join the Andersen team.
 ```

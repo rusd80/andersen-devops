@@ -18,7 +18,7 @@ At now become DevOps engineer is my dream and challenge.
 ### What do I expect from this course?:
 
 ```
-1. Get a lot of relevant expirience.
+1. Get a lot of relevant experience.
 2. Join the community of DevOps students and professionals.
 3. Get a chance to join the Andersen team.
 ```

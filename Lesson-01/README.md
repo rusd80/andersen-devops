@@ -1,11 +1,11 @@
 ### About myself:
 
-My name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation engineer with 15 years 
+Hi, my name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation engineer with 15 years 
 of experience with programming of programmable-logic controllers 
 and human-machine interface devices. I'm interested in computer science,
 programming and management methodologies such as LEAN and Kanban.
 I'm currently learning Linux administration, Docker and Kubernetes.
-At now become DevOps engineer employee is my dream and challenge. 
+At now become DevOps engineer is my dream and challenge. 
 
 ### Why am I interested in this course?:
 
@@ -19,7 +19,9 @@ At now become DevOps engineer employee is my dream and challenge.
 
 ```
 1. Get a lot of relevant expirience.
-2. Join to community of DevOps students an professionals.
-3. Take a chance to join the Andersen team.
+2. Join the community of DevOps students an professionals.
+3. Get a chance to join the Andersen team.
 ```
 
+### How to reach me:
+e-mail: rusd80@gmail.com

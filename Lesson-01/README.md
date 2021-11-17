@@ -19,7 +19,7 @@ At now become DevOps engineer is my dream and challenge.
 
 ```
 1. Get a lot of relevant expirience.
-2. Join the community of DevOps students an professionals.
+2. Join the community of DevOps students and professionals.
 3. Get a chance to join the Andersen team.
 ```
 

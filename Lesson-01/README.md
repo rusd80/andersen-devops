@@ -17,7 +17,8 @@
 18 nov 2021 TIL:
 ```
 1. How to install Jenkins and its plugins;
-3. How to create Jobs;
-3. How to use Cron.
+2. How to create Jobs;
+3. How to schedule Jobs;
+4. How to use Cron. 
 
 ```

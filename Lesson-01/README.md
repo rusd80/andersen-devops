@@ -22,3 +22,10 @@
 4. How to use Cron. 
 
 ```
+19 nov 2021 TIL:
+```
+1. How to install Gitlab-ci runner;
+2. Using tags to associate jobs with runner;
+...
+
+```

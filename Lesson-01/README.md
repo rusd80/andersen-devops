@@ -26,6 +26,19 @@
 ```
 1. How to install Gitlab-ci runner;
 2. Using tags to associate jobs with runner;
-...
+```
+
+20 nov 2021 TIL:
+```
+1. Description of Devops cycle and its stages;
+2. More about Jenkins;
+
+```
+21 nov 2021 TIL:
+```
+1. How to script Vagrantfile;
+2. How to create VM's private network;
+3. What is Jinja template for Flask;
+4. Made my first own ansible playbook. 
 
 ```

@@ -39,6 +39,6 @@
 1. How to script Vagrantfile;
 2. How to create VM's private network;
 3. What is Jinja template for Flask;
-4. Made my first own ansible playbook. 
+4. Created my first own ansible playbook and executed it. 
 
 ```

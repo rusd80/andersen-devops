@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2842d6d2-1a99-4dff-bade-a965869b6e94" name="Changes" comment="update README.md" />
+    <list default="true" id="2842d6d2-1a99-4dff-bade-a965869b6e94" name="Changes" comment="update README.md">
+      <change beforePath="$PROJECT_DIR$/Lesson-02/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-02/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +12,6 @@
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -200,7 +201,28 @@
       <option name="project" value="LOCAL" />
       <updated>1637678717068</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update README.md">
+      <created>1637678903571</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1637678903571</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update README.md">
+      <created>1637678972897</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1637678972897</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update README.md">
+      <created>1637679092643</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1637679092643</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

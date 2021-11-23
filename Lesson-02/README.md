@@ -6,7 +6,7 @@
     - controlnode: ubuntu20 192.168.50.4
     - server: debian10 192.168.50.5
 
-2. Created Flask application in folder: Flask
+2. Created simple Flask application in folder: flask
 
 3. I used Docker containerization. Created Dockerfile located in folder Flask:
 
@@ -21,7 +21,7 @@ CMD [ "app.py" ]
 
 4. Ansible playbook is located in folder ansible: playbook_docker.yml
 
-5Launch playbook on controlnode with command:
+5. Launch playbook on controlnode with command:
 ```buildoutcfg
 ansible-playbook playbook_docker.yml -i hosts.ini
 ```

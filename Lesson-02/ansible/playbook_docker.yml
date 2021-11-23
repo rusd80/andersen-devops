@@ -14,7 +14,7 @@
         - software-properties-common
       state: present
 
-# curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+# curl -fsSL https://download.docker.com/linux/debian/gpg
   - name: Add Docker s official GPG key
     apt_key:
       url: https://download.docker.com/linux/debian/gpg

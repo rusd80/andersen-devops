@@ -42,3 +42,10 @@
 4. Created my first own ansible playbook and executed it. 
 
 ```
+22 nov 2021 TIL:
+```
+1. How to script Dockerfile for flask application;
+2. How to create Ansible playbook using Docker containerization;
+...
+
+```

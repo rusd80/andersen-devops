@@ -4,7 +4,7 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks: # task list
-# install packages to allow apt to use a repository over HTTPS:
+# install packages to allow apt to use a repository over HTTPS
   - name: Install docker packages
     apt:
       pkg:

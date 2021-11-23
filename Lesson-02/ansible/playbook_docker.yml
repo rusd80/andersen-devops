@@ -1,0 +1,93 @@
+---
+- hosts: "all" # apply command to all hosts from inventory
+  become: true # become a priveleged user
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks: # task list
+# install packages to allow apt to use a repository over HTTPS:
+  - name: Install docker packages
+    apt:
+      pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+      state: present
+
+# curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  - name: Add Docker s official GPG key
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg
+      state: present
+
+# apt-key fingerprint
+#  - name: Verify that we have the key with the fingerprint
+#    apt_key:
+#      id: 0EBFCD88
+#      state: present
+
+# add-apt-repository
+  - name: Set up the stable repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+      state: present
+      update_cache: yes
+
+# apt-get update
+  - name: Update apt packages
+    apt:
+      update_cache: yes
+
+# install docker-ce latetst verion
+  - name: Install docker
+    apt:
+      name: docker-ce
+      state: present
+      update_cache: yes
+
+# delete project folder from server
+  - name: "Delete /home/vagrant/project folder"
+    ansible.builtin.file:
+      path: "/home/vagrant/project"
+      state: "absent"
+
+# copy project files from controlnode to server
+  - name: "Copy our flask app"
+    ansible.builtin.copy:
+      src: "../flask" # path on controlnode
+      dest: "/home/vagrant/project/" # path to paste on server
+      owner: "vagrant"
+      group: "vagrant"
+      mode: "0644"
+
+# addgroup docker
+  - name: "Ensure group Docker exists"
+    ansible.builtin.group:
+      name: docker
+      state: present
+
+# add vagrant user to docker group
+  - name: Add the user vagrant to group docker
+    ansible.builtin.user:
+      name: vagrant
+      groups: docker
+      append: yes
+
+# docker build .
+  - name: build container image
+    community.docker.docker_image:
+      name: docker_flask
+      build:
+        path: /home/vagrant/project/flask
+      source: build
+      state: present
+
+# docker run
+  - name: start a container
+    docker_container:
+      name: docker_flask
+      image: docker_flask
+      state: started
+      restart: yes
+      ports:
+       - "5000:5000"

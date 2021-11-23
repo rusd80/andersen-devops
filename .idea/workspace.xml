@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2842d6d2-1a99-4dff-bade-a965869b6e94" name="Changes" comment="update README.md">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Lesson-02/flask/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-02/flask/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,7 +10,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -24,213 +22,11 @@
   </component>
   <component name="ProjectId" id="210xGFfQ38QrwJFkd2jJQidoTQK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="2842d6d2-1a99-4dff-bade-a965869b6e94" name="Changes" comment="" />
-      <created>1637091710342</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1637091710342</updated>
-    </task>
-    <task id="LOCAL-00001" summary="add README.md">
-      <created>1637091980150</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1637091980150</updated>
-    </task>
-    <task id="LOCAL-00002" summary="wrote about myself to README.md">
-      <created>1637093951993</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1637093951993</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fix grammar and add info to README.md">
-      <created>1637094208441</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1637094208441</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add info to README.md">
-      <created>1637094909347</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1637094909347</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix in README.md">
-      <created>1637095235538</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1637095235538</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix in README.md">
-      <created>1637096645814</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1637096645814</updated>
-    </task>
-    <task id="LOCAL-00007" summary="fix grammar and add more  info in README.md">
-      <created>1637133359130</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1637133359130</updated>
-    </task>
-    <task id="LOCAL-00008" summary="fix grammar and add contacts in README.md">
-      <created>1637134277618</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1637134277618</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add more contacts in README.md">
-      <created>1637134519949</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1637134519949</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix typo in README.md">
-      <created>1637135546102</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1637135546102</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fix more typo in README.md">
-      <created>1637147420326</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1637147420326</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fix more typo in README.md">
-      <created>1637166524305</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1637166524305</updated>
-    </task>
-    <task id="LOCAL-00013" summary="swap README.md files&#10;add TIL">
-      <created>1637167217471</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1637167217471</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix grammar in README.md">
-      <created>1637167408294</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1637167408294</updated>
-    </task>
-    <task id="LOCAL-00015" summary="add TIL 18.11.2021 .md">
-      <created>1637268367551</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1637268367551</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add TIL 18.11.2021 .md">
-      <created>1637268392860</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1637268392860</updated>
-    </task>
-    <task id="LOCAL-00017" summary="add TIL 18.11.2021">
-      <created>1637268436147</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1637268436147</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add TIL 18.11.2021">
-      <created>1637270209522</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1637270209522</updated>
-    </task>
-    <task id="LOCAL-00019" summary="update TIL 19.11.2021">
-      <created>1637336140205</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1637336140205</updated>
-    </task>
-    <task id="LOCAL-00020" summary="add homework 2">
-      <created>1637641241961</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1637641241961</updated>
-    </task>
-    <task id="LOCAL-00021" summary="add readme to homework 2&#10;update TIL 22.11.2021">
-      <created>1637642324876</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1637642324876</updated>
-    </task>
-    <task id="LOCAL-00022" summary="fix typo">
-      <created>1637642476043</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1637642476043</updated>
-    </task>
-    <task id="LOCAL-00023" summary="update README.md">
-      <created>1637678717067</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1637678717068</updated>
-    </task>
-    <task id="LOCAL-00024" summary="update README.md">
-      <created>1637678903571</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1637678903571</updated>
-    </task>
-    <task id="LOCAL-00025" summary="update README.md">
-      <created>1637678972897</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1637678972897</updated>
-    </task>
-    <task id="LOCAL-00026" summary="update README.md">
-      <created>1637679092643</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1637679092643</updated>
-    </task>
-    <task id="LOCAL-00027" summary="update README.md">
-      <created>1637679198506</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1637679198506</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,27 +40,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="add README.md" />
-    <MESSAGE value="wrote about myself to README.md" />
-    <MESSAGE value="fix grammar and add info to README.md" />
-    <MESSAGE value="add info to README.md" />
-    <MESSAGE value="fix in README.md" />
-    <MESSAGE value="fix grammar and add more  info in README.md" />
-    <MESSAGE value="fix grammar and add contacts in README.md" />
-    <MESSAGE value="add more contacts in README.md" />
-    <MESSAGE value="fix typo in README.md" />
-    <MESSAGE value="fix more typo in README.md" />
-    <MESSAGE value="swap README.md files&#10;add TIL" />
-    <MESSAGE value="fix grammar in README.md" />
-    <MESSAGE value="add TIL 18.11.2021 .md" />
-    <MESSAGE value="add TIL 18.11.2021" />
-    <MESSAGE value="update TIL 19.11.2021" />
-    <MESSAGE value="add homework 2" />
-    <MESSAGE value="add readme to homework 2&#10;update TIL 22.11.2021" />
-    <MESSAGE value="fix typo" />
-    <MESSAGE value="update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>

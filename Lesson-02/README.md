@@ -8,7 +8,7 @@
 
 2. Created Flask application in folder: Flask
 
-3. I use Docker containerization. Dockerfile in folder Flask:
+3. I used Docker containerization. Created Dockerfile in folder Flask:
 
 ```
 FROM python

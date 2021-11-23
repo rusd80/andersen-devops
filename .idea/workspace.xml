@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Lesson-02/flask/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-02/flask/Dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="update gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +25,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="refactor dockerfile">
+      <created>1637681469207</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637681469207</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update gitignore">
+      <created>1637681537495</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637681537495</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -40,5 +53,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor dockerfile" />
+    <MESSAGE value="update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
   </component>
 </project>

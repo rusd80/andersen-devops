@@ -21,10 +21,10 @@
       state: present
 
 # apt-key fingerprint
-#  - name: Verify that we have the key with the fingerprint
-#    apt_key:
-#      id: 0EBFCD88
-#      state: present
+  - name: Verify that we have the key with the fingerprint
+    apt_key:
+      id: 0EBFCD88
+      state: present
 
 # add-apt-repository
   - name: Set up the stable repository
@@ -46,22 +46,22 @@
       update_cache: yes
 
 # delete project folder from server
-  - name: "Delete /home/vagrant/project folder"
+  - name: Delete /home/vagrant/project folder
     ansible.builtin.file:
-      path: "/home/vagrant/project"
-      state: "absent"
+      path: /home/vagrant/project
+      state: absent
 
 # copy project files from controlnode to server
-  - name: "Copy our flask app"
+  - name: Copy our flask app
     ansible.builtin.copy:
-      src: "../flask" # path on controlnode
-      dest: "/home/vagrant/project/" # path to paste on server
-      owner: "vagrant"
-      group: "vagrant"
+      src: ../flask # path on controlnode
+      dest: /home/vagrant/project/ # path to paste on server
+      owner: vagrant
+      group: vagrant
       mode: "0644"
 
 # addgroup docker
-  - name: "Ensure group Docker exists"
+  - name: Ensure group Docker exists
     ansible.builtin.group:
       name: docker
       state: present

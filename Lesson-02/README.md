@@ -3,12 +3,12 @@
 ## Task: Create flask application and deploy it on VM with ansible
 
 1. Provisioning 2 VM's with Vagrant:
-    - controlnode: ubuntu 20
-    - server: debian 10
+    - controlnode: ubuntu20 192.168.50.4
+    - server: debian10 192.168.50.5
 
 2. Created Flask application in folder: Flask
 
-3. I used Docker containerization. Created Dockerfile in folder Flask:
+3. I used Docker containerization. Created Dockerfile located in folder Flask:
 
 ```
 FROM python
@@ -19,13 +19,9 @@ ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]
 ```
 
-4. Ansible playbook in folder ansible: playbook_docker.yml
+4. Ansible playbook is located in folder ansible: playbook_docker.yml
 
-5. hosts.ini:
-```buildoutcfg
-
-```
-7. Launch playbook with command:
+5Launch playbook on controlnode with command:
 ```buildoutcfg
 ansible-playbook playbook_docker.yml -i hosts.ini
 ```

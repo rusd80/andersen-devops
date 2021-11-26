@@ -23,7 +23,7 @@ We send the result to the while loop in which we run all the IP addresses throug
 ### Manual
 Download script and run it. You should specify process name or PID as the script argument. Run this script as root to see more details.
 
-Usage: script.sh [-h] [-n] [-s] [-w] process
+Usage: script.sh [-h] [-n] [-a] [-w] [-t] process
 
 This script shows WHOIS information of a specified program (process or PID) current connections.
 
@@ -33,14 +33,15 @@ process         Specify process name or PID
 Available options:
 -h      Print this help and exit
 -n      Set number of output lines, 5 by default
--s      Choose connection state, all by default. Possible values: listen, established, time_wait, close_wait
+-a      Choose connection state, -a: all connections, only ESTABLISHED by default. 
 -w      Show more info: address, e-mail 
--c      Use `ss` utility ( by default: 'netstat' )
+-t      Use `ss` utility ( by default: 'netstat' )
 
 ## Usage example:
 
 ```
-script.sh -n 10 -s established -w -t chrome
+script.sh -n 10 -a -w -t chrome
+script.sh -n 7 zoom
 ```
 ## result:
 ```

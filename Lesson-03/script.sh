@@ -8,19 +8,21 @@
 [ -z "$(which netstat)" ] && err "Please install netstat package." && exit 2
 
 # default values of parameters
-number=5 ; mode="normal" ; tool="netstat" ; state="established"
+number=5 ; mode="normal" ; tool="netstat" ; state=ESTAB
 
 # parse and check parameters
 [ $1 == '-n' ] && number=$2 && shift && shift || { echo "Error: bad -n parameter"; exit 3; }
-[ $1 == '-s' ] && state=$2 && shift && shift || { echo "Error: bad -s parameter"; exit 3; }
+[ $1 == '-a' ] && state='.' && shift
 [ $1 == '-w' ] && mode="wide" && shift
 [ $1 == '-t' ] && tool="ss" && shift
 process="${1}"
-[ -z "$process" ] && echo 'Error: process or PID dont set' && exit 3
+
+# check process name or PID
+[ -z "$process" ] && echo 'Error: process or PID don`t set' && exit 3
 
 # get an IP list by process name or PID
 ip_list=$(get_ips $process)
-
+echo $ip_list
 # check for empty ip list
 [ -z "$ip_list" ] && echo 'No connections found for given PID or process name' && exit 4
 

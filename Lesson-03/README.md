@@ -37,12 +37,12 @@ Available options:
 -w      Show more info: address, e-mail 
 -c      Use `ss` utility ( by default: 'netstat' )
 
-Usage example:
+## Usage example:
 
 ```
 script.sh -n 10 -s established -w -t chrome
 ```
-##result:
+## result:
 ```
 | Number of connects |  Organization         [ Info ]                  | 
 +--------------------|--------------------------------------------------+

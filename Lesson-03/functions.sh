@@ -12,9 +12,21 @@ function get_info(){
 }
 
 function print_frame(){
-  separator_line="+--------------------|--------------------------------------------------+"
-  echo $separator_line
+  separator="+--------------------|--------------------------------------------------+"
+  echo $separator
   printf "%-70s | \n" \
                  "| Number of connects |  Organization         [ Info ]        "
-  echo $separator_line
+  echo $separator
 }
+
+# define "help" message
+help=$'
+usage: ./script.sh [PROCESS NAME or PID] [LINES LIMIT] [MODE]
+Shows the names of the organizations with which the PROCESS has
+established a connection. The list of organizations is sorted in
+descending order of the number of connections
+
+Examples:
+$ ./script.sh chrome 9
+$ ./script.sh chrome 10 -w
+$ ./script.sh -h or --help'

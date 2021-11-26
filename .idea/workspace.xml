@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="update playbook">
-      <change afterPath="$PROJECT_DIR$/Lesson-03/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson-03/functions.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson-03/whoscript.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="add script.sh">
+      <change beforePath="$PROJECT_DIR$/Lesson-03/functions.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/functions.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson-03/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/script.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +118,7 @@
     <MESSAGE value="refactor dockerfile" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="update playbook" />
-    <option name="LAST_COMMIT_MESSAGE" value="update playbook" />
+    <MESSAGE value="add script.sh" />
+    <option name="LAST_COMMIT_MESSAGE" value="add script.sh" />
   </component>
 </project>

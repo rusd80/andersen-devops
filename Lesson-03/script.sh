@@ -1,14 +1,16 @@
 #!/bin/env bash
 
 . ./functions.sh
+
 # define "help" message
 help=$'
-usage: ./whoscript.sh [PROCESS NAME or PID] [LINES LIMIT]
+usage: ./script.sh [PROCESS NAME or PID] [LINES LIMIT] [MODE]
 Shows the names of the organizations with which the PROCESS has
 established a connection.
 Examples:
-$ ./whoscript.sh chrome 3
-$ ./whoscript.sh -h or --help'
+$ ./script.sh chrome 9
+$ ./script.sh chrome 10 -w
+$ ./script.sh -h or --help'
 
 # argument - help
 [[ $1 == '-h' || $1 == '--help' ]] && echo "$help" && exit 0

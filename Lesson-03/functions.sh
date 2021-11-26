@@ -1,7 +1,5 @@
 #!/bin/env bash
 
-fields='^Organization|role ^Address^address ^Country|^country'
-
 function get_ips(){
   local res=$(ss -tunap | awk -v pat=$1 '$0 ~pat {print $6}' | uniq -c | grep -oP '(\d+\.){3}\d+' | sort | tail -n$2 | uniq -c)
   echo $res

@@ -47,5 +47,17 @@
 1. How to script Dockerfile for flask application;
 2. How to create Ansible playbook using Docker containerization;
 ...
-
+24 nov 2021 TIL:
 ```
+1. Basic syntax of bash scripts;
+2. How to create functions with parameter in bash scripts;
+...
+24 nov 2021 TIL:
+```
+1. Bash commands: awk, sed
+...
+24 nov 2021 TIL:
+```
+1. How to use Maven
+2. Nexus, JFrog;
+...

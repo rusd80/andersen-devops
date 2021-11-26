@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="add comments">
+    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="add state handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson-03/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson-03/functions.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/functions.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson-03/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson-01/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-01/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637941516326</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add state handler">
+      <created>1637945737528</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1637945737528</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,6 +202,7 @@
     <MESSAGE value="fix typo README" />
     <MESSAGE value="add comments, checked 2 tools" />
     <MESSAGE value="add comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add comments" />
+    <MESSAGE value="add state handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="add state handler" />
   </component>
 </project>

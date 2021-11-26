@@ -1,13 +1,15 @@
 #!/bin/env bash
 
 function get_ips(){
-  local res=$(ss -tunap | awk -v pat=$1 '$0 ~pat {print $6}' | sort | uniq -c | grep -oP '(\d+\.){3}\d+' )
+  [ $tool == 'netstat' ] && local res=$(sudo netstat -tunapl | awk -v pat=$1 '$0 ~pat {print $5}' | cut -d: -f1 | sort | uniq -c |
+sort | grep -oP '(\d+\.){3}\d+' )
+  [ $tool == 'ss' ] && local res=$(ss -tunap | awk -v pat=$1 '$0 ~pat {print $6}' | sort | uniq -c | grep -oP '(\d+\.){3}\d+' )
   echo $res
 }
 
 function get_info(){
   [ $mode == 'normal' ] && local res=$(whois $1 | awk -F':' '/^Organization|^role/ {print $2}' | cut -d'(' -f1 )
-  [ $mode == 'wide' ] && local res=$(whois $1 | awk -F':' '/^Organization|organization|^OrgName|org-name|Country|ddress|^OrgTechEmail|mailbox/ {print $2}' ORS="  |  "  )
+  [ $mode == 'wide' ] && local res=$(whois $1 | awk -F':' '/^Organization|organization|^OrgName|org-name|ddress|^OrgTechEmail|mailbox/ {print $2}' ORS="  |  "  )
   echo $res
 }
 

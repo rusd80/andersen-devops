@@ -4,6 +4,8 @@
     <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="update README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson-03/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson-03/functions.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/functions.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson-03/script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/script.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637930202406</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update README.md">
+      <created>1637930953176</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637930953176</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

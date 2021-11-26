@@ -7,7 +7,7 @@ function get_ips(){
 
 function get_info(){
   [ $mode == 'normal' ] && local res=$(whois $1 | awk -F':' '/^Organization|^role/ {print $2}' | cut -d'(' -f1 )
-  [ $mode == 'wide' ] && local res=$(whois $1 | awk -F':' '/^Organization|organization|^OrgName|org-name|ddress|^OrgTechEmail|mailbox/ {print $2}' ORS="  |  "  )
+  [ $mode == 'wide' ] && local res=$(whois $1 | awk -F':' '/^Organization|organization|^OrgName|org-name|Country|ddress|^OrgTechEmail|mailbox/ {print $2}' ORS="  |  "  )
   echo $res
 }
 
@@ -30,3 +30,4 @@ Examples:
 $ ./script.sh chrome 9
 $ ./script.sh chrome 10 -w
 $ ./script.sh -h or --help'
+

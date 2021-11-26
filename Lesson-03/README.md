@@ -36,6 +36,21 @@ Available options:
 -s      Choose connection state, all by default. Possible values: listen, established, time_wait, close_wait
 -w      Show more info: address, e-mail 
 -c      Use `ss` utility ( by default: 'netstat' )
+
 Usage example:
 
-script.sh -n 10 -s established -w chrome
+```
+script.sh -n 10 -s established -w -t chrome
+```
+##result:
+```
+| Number of connects |  Organization         [ Info ]                  | 
++--------------------|--------------------------------------------------+
+      6                 Google LLC (GOGL) | Google LLC | 1600 Amphitheatre Parkway | US | arin-contact@google.com |
+      2                 Facebook Ireland Ltd | 4 GRAND CANAL SQUARE , GRAND CANAL HARBOUR , | D2 | Dublin | IRELAND | 1601 Willow Rd. | Menlo Park, CA, 94025 | domain@fb.com |
+      1                 Stack Exchange, Inc. (SE-111) | Stack Exchange, Inc. | 110 William St. | Floor 28 | US | sysadmin-team@stackexchange.com |
+      1                 iHome Ltd. | 1A Semenovskaya pl. | 107023, Moscow, Russia | abuse@ihome.ru |
+      1                 GitHub, Inc. (GITHU) | GitHub, Inc. | 88 Colin P Kelly Jr Street | US | hostmaster@github.com |
+      1                 Facebook, Inc. (THEFA-3) | Facebook, Inc. | 1601 Willow Rd. | US | domain@facebook.com |
+
+```

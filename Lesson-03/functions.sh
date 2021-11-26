@@ -1,8 +1,10 @@
 #!/bin/env bash
 
 function get_ips(){
+  # get connections with netstat
   [ $tool == 'netstat' ] && local res=$(sudo netstat -tunapl | awk -v pat=$1 '$0 ~pat {print $5}' | cut -d: -f1 | sort | uniq -c |
 sort | grep -oP '(\d+\.){3}\d+' )
+  # get connections with ss
   [ $tool == 'ss' ] && local res=$(ss -tunap | awk -v pat=$1 '$0 ~pat {print $6}' | sort | uniq -c | grep -oP '(\d+\.){3}\d+' )
   echo $res
 }

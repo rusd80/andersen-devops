@@ -2,7 +2,7 @@
 
 ## What this one-liner does
 This script displays the name of the organizations that own the IP addresses to which the process, passed as a parameter to this script, connects. The process can be specified by name or by proccess ID.
-````
+```
 netstat - is a command-line utility for working with the network, for displaying various network parameters depending on the specified options.
 -t or --tcp - show tcp ports
 -u or --udp - show udp ports

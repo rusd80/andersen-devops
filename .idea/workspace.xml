@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="update TIL">
+    <list default="true" id="25fbe322-b6d0-4477-85f6-2d04cfc15818" name="Changes" comment="update help">
+      <change afterPath="$PROJECT_DIR$/Lesson-04/bot.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson-03/functions.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson-03/functions.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637947246375</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update help">
+      <created>1637948139887</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1637948139887</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,6 +218,7 @@
     <MESSAGE value="add comments" />
     <MESSAGE value="add state handler" />
     <MESSAGE value="update TIL" />
-    <option name="LAST_COMMIT_MESSAGE" value="update TIL" />
+    <MESSAGE value="update help" />
+    <option name="LAST_COMMIT_MESSAGE" value="update help" />
   </component>
 </project>

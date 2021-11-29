@@ -13,18 +13,9 @@ import (
 )
 
 var (
-	apiUrl string = "https://api.github.com/repos/rusd80/andersen-devops/contents"
-	//	repo_url string = "https://github.com/rusd80/andersen-devops"
-	//	greeting string = "Hi there 🖐️! I'm simple but a useful bot 🧑‍💻. I was made with ❤️ by @by_ventz.\n\n" +
-	//		"☝️ At the top you can see my commands. Type /help to see a tip again."
-	//	help_msg string = "Type /git to receive the course repository address.\n" +
-	//		"Type /tasks to see a list with tasks done.\n" +
-	//		"Type /task#, where \"#\" is a task number, to receive " +
-	//		"the link to the folder with the task done.\n"
-	taskErr string = "⛔️ No no no! Homework isn't done yet."
-	cmdErr  string = "⁉️ I don't know this command. Type /help to know right commands."
-	//	noncmd_err string = "🥱 I only accept several commands but I keep learning.\n" +
-	//		"Type /help to see a tip."
+	apiUrl   string = "https://api.github.com/repos/rusd80/andersen-devops/contents"
+	taskErr  string = "This homework is`nt done!"
+	cmdErr   string = "Unknown command. Please try /help."
 	taskList []homeWork
 	response string
 

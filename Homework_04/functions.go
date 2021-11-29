@@ -22,7 +22,7 @@ var (
 	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
 		"`github.com/rusd80/andersen-devops` " +
 		"Use /help command to learn how to use bot."
-	help string = "Commands availabe:\n /tasks shows list of completed homeworks in your repo. \n" +
+	help string = "Commands availabe:\n/tasks shows list of completed homeworks in your repo. \n" +
 		"/task##, where ## is number of homework, shows URL to this homework directory. "
 )
 
@@ -40,6 +40,12 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	botMessage := strings.ToLower(body.Message.Text)
 	if botMessage == "/tasks" || botMessage == "/start" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
+		if err != nil {
+			log.Panic(err)
+			return
+		}
+	} else {
+		err := sendReply(body.Message.Chat.ID, "/badCommand")
 		if err != nil {
 			log.Panic(err)
 			return
@@ -136,6 +142,9 @@ func commandHandler(command string) (string, error) {
 		return response, nil
 	case "/help":
 		response = help
+		return response, nil
+	case "/badCommand":
+		response = cmdErr
 		return response, nil
 	default:
 		pattern := re.MustCompile("/task([0-9]+)")

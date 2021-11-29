@@ -3,10 +3,11 @@
 ## This bot can get repository list from Github
 
 ### Bot provides this commands:
-1. /start - greeting and basic info about bot
-2. /help - describing of commands
-3. /tasks - get full list of your done homeworks directories 
-4. /task# - get URL to directory of homework number #
+1. `/start` - greeting and basic info about bot
+2. `/help`  - describing of commands
+3. `/git`   - returns URL of repository
+4. `/tasks` - get full list of your done homeworks directories 
+5. `/task#` - get URL to directory of homework number #
 
 ### If you don't have "white" IP, use tunnel [ngrok](https://ngrok.com/)
 ```

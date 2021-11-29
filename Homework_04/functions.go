@@ -21,8 +21,9 @@ var (
 	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
 		"github.com/rusd80/andersen-devops " +
 		"Use /help command to learn how to use bot."
-	help string = "Commands available:\n/tasks shows list of completed homeworks in your repo. \n" +
-		"/task##, where ## is number of homework, shows URL to this homework directory. "
+	help string = "Commands available:\n /tasks shows list of completed homeworks in your repo\n" +
+		"/task##, where ## is number of homework, shows URL to this homework directory\n" +
+		"/git - returns URL of your repository"
 )
 
 // handler of sent requests from bot using webhook
@@ -37,7 +38,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	}
 	// If the known command received call the sendReply function
 	botMessage := strings.ToLower(body.Message.Text)
-	if botMessage == "/tasks" || botMessage == "/start" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
+	if botMessage == "/tasks" || botMessage == "/start" || botMessage == "/git" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
 		if err != nil {
 			log.Panic(err)
@@ -134,6 +135,9 @@ func commandHandler(command string) (string, error) {
 	case "/help":
 		response = help
 		return response, nil
+	case "/git":
+		response = help
+		return "github.com" + repo, nil
 	case "/badCommand":
 		response = cmdErr
 		return response, nil

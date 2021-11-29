@@ -18,8 +18,6 @@ var (
 	cmdErr   string = "Unknown command. Please try /help."
 	taskList []homeWork
 	response string
-
-//	updated_at time.Time
 )
 
 func webHookHandler(rw http.ResponseWriter, req *http.Request) {
@@ -31,8 +29,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 		log.Panic(err)
 		return
 	}
-	// strings.HasPrefix("my string", "my")
-	// If the command /tasks is received call the sendReply function
+	// If the known command received call the sendReply function
 	botMessage := strings.ToLower(body.Message.Text)
 	if botMessage == "/tasks" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
@@ -44,7 +41,6 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func sendReply(chatID int64, command string) error {
-
 	text, err := commandHandler(command)
 	if err != nil {
 		return err
@@ -130,7 +126,7 @@ func commandHandler(command string) (string, error) {
 	}
 }
 
-// Get_task_url retrieves a URL for a passed task.
+// Get_task_url retrieves a URL for a done homework
 func getTaskUrl(taskNum string) string {
 	var url string
 	fmt.Println(taskNum)

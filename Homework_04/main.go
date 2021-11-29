@@ -8,13 +8,18 @@ import (
 	"os"
 )
 
-var botToken string
+var (
+	botToken string
+	appPort  string
+)
 
 func main() {
 	godotenv.Load(".env")
+	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
-	fmt.Println(botToken)
-	err := http.ListenAndServe(":8090", http.HandlerFunc(webHookHandler))
+	appPort = os.Getenv("PORT")
+	fmt.Println(botToken, appPort)
+	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)
 		return

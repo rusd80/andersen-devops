@@ -1,5 +1,6 @@
 package main
 
+// struct of webhook POST request
 type webHookReqBody struct {
 	Message struct {
 		Text string `json:"text"`
@@ -9,12 +10,13 @@ type webHookReqBody struct {
 	} `json:"message"`
 }
 
+// struct of message to send
 type sendMessageReqBody struct {
 	ChatID int64  `json:"chat_id"`
 	Text   string `json:"text"`
 }
 
-//struct stores "names" and "URLs" of tasks done.
+//struct of HOMEWORK data: "names" and "URLs"
 type homeWork struct {
 	Name string `json:"name"`
 	URL  string `json:"html_url"`

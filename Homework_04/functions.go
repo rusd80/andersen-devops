@@ -14,15 +14,14 @@ import (
 )
 
 var (
-	apiUrl   string     = "https://api.github.com/repos/rusd80/andersen-devops/contents"
 	taskErr  string     = "This homework is`nt done!"
 	cmdErr   string     = "Unknown command. Please try /help."
 	taskList []homeWork // array of jsons to get from GitHub API
 	response string
 	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
-		"`github.com/rusd80/andersen-devops` " +
+		"github.com/rusd80/andersen-devops " +
 		"Use /help command to learn how to use bot."
-	help string = "Commands availabe:\n/tasks shows list of completed homeworks in your repo. \n" +
+	help string = "Commands available:\n/tasks shows list of completed homeworks in your repo. \n" +
 		"/task##, where ## is number of homework, shows URL to this homework directory. "
 )
 

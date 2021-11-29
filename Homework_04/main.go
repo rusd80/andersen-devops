@@ -10,6 +10,8 @@ import (
 var (
 	botToken string // secret token of my telegram bot
 	appPort  string // port that uses this app
+	repo     string
+	apiUrl   string //  = "https://api.github.com/repos/rusd80/andersen-devops/C
 )
 
 func main() {
@@ -20,10 +22,12 @@ func main() {
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")
-	if botToken == "" || appPort == "" {
+	repo = os.Getenv("REPO")
+	if botToken == "" || appPort == "" || repo == "" {
 		log.Fatal("Can`t read .env file")
 		return
 	}
+	apiUrl = "https://api.github.com/repos" + repo + "/contents"
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)

@@ -19,9 +19,13 @@ var (
 	cmdErr   string = "Unknown command. Please try /help."
 	taskList []homeWork
 	response string
+	start    string = "Hello! This bot can get info about your homeworks from Github repository." +
+		" Use /help command to learn how to use bot."
+	help string = "Commands availabe:\n /tasks shows list of completed homeworks in your repo. \n" +
+		"\n /task##, where ## is number of homework, shows URL to this homework directory. "
 )
 
-func webHookHandler(req *http.Request) {
+func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	// Create our web hook request body type instance
 	body := &webHookReqBody{}
 	// Decodes the incoming request into our custom webhook req body type
@@ -32,7 +36,7 @@ func webHookHandler(req *http.Request) {
 	}
 	// If the known command received call the sendReply function
 	botMessage := strings.ToLower(body.Message.Text)
-	if botMessage == "/tasks" || strings.HasPrefix(botMessage, "/task") {
+	if botMessage == "/tasks" || botMessage == "/start" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
 		if err != nil {
 			log.Panic(err)
@@ -122,6 +126,12 @@ func commandHandler(command string) (string, error) {
 		}
 		fmt.Println(response)
 		return response, err
+	case "/start":
+		response = start
+		return response, nil
+	case "/help":
+		response = help
+		return response, nil
 	default:
 		pattern := re.MustCompile("/task([0-9]+)")
 		if pattern.MatchString(command) {
@@ -136,7 +146,7 @@ func commandHandler(command string) (string, error) {
 	}
 }
 
-// Get_task_url retrieves a URL for a done homework
+// Retrieves a URL for a done homework
 func getTaskUrl(taskNum string) string {
 	var url string
 	fmt.Println(taskNum)

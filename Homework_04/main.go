@@ -14,7 +14,10 @@ var (
 )
 
 func main() {
-	godotenv.Load(".env")
+	loadErr := godotenv.Load(".env")
+	if loadErr != nil {
+		return
+	}
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")

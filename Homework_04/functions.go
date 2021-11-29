@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	re "regexp"
@@ -64,7 +65,11 @@ func sendReply(chatID int64, command string) error {
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+		}
+	}(resp.Body)
 	if resp.StatusCode != http.StatusOK {
 		return errors.New("unexpected status" + resp.Status)
 	}
@@ -77,7 +82,12 @@ func fetchTasks() (string, error) {
 		log.Fatal(getErr)
 	}
 	if resp.Body != nil {
-		defer resp.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+
+			}
+		}(resp.Body)
 		decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
 		if decodeErr != nil {
 			log.Fatal(decodeErr)

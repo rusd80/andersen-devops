@@ -20,6 +20,10 @@ func main() {
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")
+	if botToken == "" || appPort == "" {
+		log.Fatal("Can`t read .env file")
+		return
+	}
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)

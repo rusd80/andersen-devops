@@ -99,18 +99,13 @@ func fetchTasks() (string, error) {
 		defer func(Body io.ReadCloser) {
 			err := Body.Close()
 			if err != nil {
-
+				log.Fatal(err)
 			}
 		}(resp.Body)
 		decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
 		if decodeErr != nil {
 			log.Fatal(decodeErr)
 		}
-	}
-	fmt.Println(len(taskList))
-	for i := range taskList {
-		fmt.Println(taskList[i].Name)
-		fmt.Println(taskList[i])
 	}
 	response = "The next tasks are done ✅:\n"
 	f := func(c rune) bool {
@@ -122,20 +117,17 @@ func fetchTasks() (string, error) {
 			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
 		}
 	}
-	fmt.Println(response)
 	return response, getErr
 }
 
 // handler of commands received from bot
 func commandHandler(command string) (string, error) {
-	fmt.Println(command)
 	switch command {
 	case "/tasks":
 		response, err := fetchTasks()
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(response)
 		return response, err
 	case "/start":
 		response = start
@@ -150,7 +142,6 @@ func commandHandler(command string) (string, error) {
 		pattern := re.MustCompile("/task([0-9]+)")
 		if pattern.MatchString(command) {
 			taskNumber := pattern.FindStringSubmatch(command)[1]
-			fmt.Println(taskNumber)
 			response = getTaskUrl(taskNumber)
 		} else {
 			response = cmdErr
@@ -162,7 +153,6 @@ func commandHandler(command string) (string, error) {
 // Retrieves a URL for a done homework
 func getTaskUrl(taskNum string) string {
 	var url string
-	fmt.Println(taskNum)
 	taskName := fmt.Sprintf("Homework_%s", taskNum)
 	for i := range taskList {
 		if taskList[i].Name == taskName {

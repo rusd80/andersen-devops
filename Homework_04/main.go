@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
@@ -9,8 +8,8 @@ import (
 )
 
 var (
-	botToken string
-	appPort  string
+	botToken string // secret token of my telegram bot
+	appPort  string // port that uses this app
 )
 
 func main() {
@@ -21,7 +20,6 @@ func main() {
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")
-	fmt.Println(botToken, appPort)
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)

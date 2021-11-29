@@ -14,17 +14,19 @@ import (
 )
 
 var (
-	apiUrl   string = "https://api.github.com/repos/rusd80/andersen-devops/contents"
-	taskErr  string = "This homework is`nt done!"
-	cmdErr   string = "Unknown command. Please try /help."
-	taskList []homeWork
+	apiUrl   string     = "https://api.github.com/repos/rusd80/andersen-devops/contents"
+	taskErr  string     = "This homework is`nt done!"
+	cmdErr   string     = "Unknown command. Please try /help."
+	taskList []homeWork // array of jsons to get from GitHub API
 	response string
-	start    string = "Hello! This bot can get info about your homeworks from Github repository." +
-		" Use /help command to learn how to use bot."
+	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
+		"`github.com/rusd80/andersen-devops` " +
+		"Use /help command to learn how to use bot."
 	help string = "Commands availabe:\n /tasks shows list of completed homeworks in your repo. \n" +
-		"\n /task##, where ## is number of homework, shows URL to this homework directory. "
+		"/task##, where ## is number of homework, shows URL to this homework directory. "
 )
 
+// handler of sent requests from bot using webhook
 func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	// Create our web hook request body type instance
 	body := &webHookReqBody{}
@@ -45,6 +47,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	}
 }
 
+// function sends response to bot via http.Post
 func sendReply(chatID int64, command string) error {
 	text, err := commandHandler(command)
 	if err != nil {
@@ -80,6 +83,7 @@ func sendReply(chatID int64, command string) error {
 	return err
 }
 
+// function of fetching content from GitHub repository
 func fetchTasks() (string, error) {
 	resp, getErr := http.Get(apiUrl)
 	if getErr != nil {
@@ -116,6 +120,7 @@ func fetchTasks() (string, error) {
 	return response, getErr
 }
 
+// handler of commands received from bot
 func commandHandler(command string) (string, error) {
 	fmt.Println(command)
 	switch command {
@@ -138,7 +143,6 @@ func commandHandler(command string) (string, error) {
 			taskNumber := pattern.FindStringSubmatch(command)[1]
 			fmt.Println(taskNumber)
 			response = getTaskUrl(taskNumber)
-
 		} else {
 			response = cmdErr
 		}
@@ -151,7 +155,6 @@ func getTaskUrl(taskNum string) string {
 	var url string
 	fmt.Println(taskNum)
 	taskName := fmt.Sprintf("Homework_%s", taskNum)
-
 	for i := range taskList {
 		if taskList[i].Name == taskName {
 			url = taskList[i].URL

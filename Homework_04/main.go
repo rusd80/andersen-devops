@@ -10,8 +10,8 @@ import (
 var (
 	botToken string // secret token of my telegram bot
 	appPort  string // port that uses this app
-	repo     string
-	apiUrl   string //  = "https://api.github.com/repos/rusd80/andersen-devops/C
+	repo     string // repository on GitHub
+	apiUrl   string // full URL of GitHub API
 )
 
 func main() {

@@ -21,7 +21,7 @@ var (
 	response string
 )
 
-func webHookHandler(rw http.ResponseWriter, req *http.Request) {
+func webHookHandler(req *http.Request) {
 	// Create our web hook request body type instance
 	body := &webHookReqBody{}
 	// Decodes the incoming request into our custom webhook req body type

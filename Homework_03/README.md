@@ -23,19 +23,16 @@ We send the result to the while loop in which we run all the IP addresses throug
 ### Manual
 Download script and run it. You should specify process name or PID as the script argument. Run this script as root to see more details.
 
-Usage: script.sh [-h] [-n] [-a] [-w] [-t] process
+usage:
+./script.sh [options] <process>
 
-This script shows WHOIS information of a specified program (process or PID) current connections.
+Options:
+-n  <number>          number of lines to output,default value: 5
+-a                    all connections, default - only ESTABLISHED
+-w                    more information, default - only ORGANIZATION name
+-t                    `ss`, default - `netstat`
+<process>             PROCESS NAME OR PID - name or PID of process to analyze its connections
 
-Required argument:
-process         Specify process name or PID
-
-Available options:
--h      Print this help and exit
--n      Set number of output lines, 5 by default
--a      Choose connection state, -a: all connections, only ESTABLISHED by default. 
--w      Show more info: address, e-mail 
--t      Use `ss` utility ( by default: 'netstat' )
 
 ## Usage example:
 

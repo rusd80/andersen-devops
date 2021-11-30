@@ -21,7 +21,7 @@ var (
 	response string
 	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
 		"Use /help command to learn how to use bot."
-	help string = "Commands available:\n /tasks shows list of completed homeworks in your repo\n" +
+	help string = "Commands available:\n/tasks shows list of completed homeworks in your repo\n" +
 		"/task##, where ## is number of homework, shows URL to this homework directory\n" +
 		"/git - returns URL of your repository\n" +
 		"/topics - returns repository's list of topics\n" +

@@ -16,8 +16,6 @@ var (
 	apiUrlCommits  string // full URL of GitHub API /statistics participation
 )
 
-// get topics
-// get commit count
 func main() {
 	loadErr := godotenv.Load(".env")
 	if loadErr != nil {

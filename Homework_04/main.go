@@ -8,10 +8,12 @@ import (
 )
 
 var (
-	botToken string // secret token of my telegram bot
-	appPort  string // port that uses this app
-	repo     string // repository on GitHub
-	apiUrl   string // full URL of GitHub API
+	botToken       string // secret token of my telegram bot
+	appPort        string // port that uses this app
+	repo           string // repository on GitHub
+	apiUrlContents string // full URL of GitHub API /contents
+	apiUrlTopics   string // full URL of GitHub API /topics
+	apiUrlCommits  string // full URL of GitHub API /statistics participation
 )
 
 // get topics
@@ -29,7 +31,9 @@ func main() {
 		log.Fatal("Can`t read .env file")
 		return
 	}
-	apiUrl = "https://api.github.com/repos" + repo + "/contents"
+	apiUrlContents = "https://api.github.com/repos" + repo + "/contents"
+	apiUrlTopics = "https://api.github.com/repos" + repo + "/topics"
+	apiUrlCommits = "https://api.github.com/repos" + repo + "/stats/participation"
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)

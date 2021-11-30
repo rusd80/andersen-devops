@@ -8,22 +8,18 @@
 3. `/git`   - returns URL of repository
 4. `/tasks` - get full list of your done homeworks directories 
 5. `/task#` - get URL to directory of homework number #
+6. `/topics` - show list of topics of the repository
+7. `/stats` - shows number of commits made this week and the previous week
 
 ### If you don't have "white" IP, use tunnel [ngrok](https://ngrok.com/)
 ```
-ngrok by @inconshreveable 
-                                                                                
-Session Status                online                                            
-Session Expires               1 hour, 59 minutes                                
-Version                       2.3.40                                            
-Region                        United States (us)                                
-Web Interface                 http://127.0.0.1:4040                             
-Forwarding                    http://84e1-85-142-172-180.ngrok.io -> http://loca
-Forwarding                    https://84e1-85-142-172-180.ngrok.io -> http://loc
-                                                                                
-Connections                   ttl     opn     rt1     rt5     p50     p90       
-                              0       0       0.00    0.00    0.00    0.00      
-                                                                             
+Session Status                online                                                             
+Version                       2.3.40                                                             
+Region                        United States (us)                                                 
+Web Interface                 http://127.0.0.1:4040                                              
+Forwarding                    http://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090        
+Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090       
+                                                                  
 ```
 ## To run bot:
 1. Clone repo with `git clone` command 
@@ -38,5 +34,5 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 
 Also, you should set `WEBHOOK` to allow telegram send POST requests to your app:
 ```
-curl --location --request POST 'https://api.telegram.org/bot2144052527:AAELCMqXtbt9jKclUWVZj####SECRET####/setWebhook?url=https://1cd2-176-53-210-50.ngrok.io'
+curl --location --request POST 'https://api.telegram.org/bot21440#####:AAELCMqXtbt9jKclUWVZj####SECRET####/setWebhook?url=https://1cd2-176-53-210-50.ngrok.io'
 ```

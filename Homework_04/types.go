@@ -10,6 +10,16 @@ type webHookReqBody struct {
 	} `json:"message"`
 }
 
+// struct of topics data
+type allTopics struct {
+	Names []string `json:"names"`
+}
+
+// struct of commit stats data
+type commitStats struct {
+	All []int `json:"all"`
+}
+
 // struct of message to send
 type sendMessageReqBody struct {
 	ChatID int64  `json:"chat_id"`

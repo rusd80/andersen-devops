@@ -93,37 +93,6 @@ func sendReply(chatID int64, command string) error {
 	return err
 }
 
-// function of fetching content from GitHub repository
-func fetchTasks() (string, error) {
-	resp, getErr := http.Get(apiUrlContents)
-	if getErr != nil {
-		log.Fatal(getErr)
-	}
-	if resp.Body != nil {
-		defer func(Body io.ReadCloser) {
-			err := Body.Close()
-			if err != nil {
-				log.Fatal(err)
-			}
-		}(resp.Body)
-		decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
-		if decodeErr != nil {
-			log.Fatal(decodeErr)
-		}
-	}
-	response = "The next tasks are done:\n"
-	f := func(c rune) bool {
-		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
-	}
-	for i := range taskList {
-		if strings.HasPrefix(taskList[i].Name, "Homework") {
-			taskNum := strings.FieldsFunc(taskList[i].Name, f)[1]
-			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
-		}
-	}
-	return response, getErr
-}
-
 // handler of commands received from bot
 func commandHandler(command string) (string, error) {
 	switch command {
@@ -169,6 +138,37 @@ func commandHandler(command string) (string, error) {
 		}
 		return response, nil
 	}
+}
+
+// function of fetching content from GitHub repository
+func fetchTasks() (string, error) {
+	resp, getErr := http.Get(apiUrlContents)
+	if getErr != nil {
+		log.Fatal(getErr)
+	}
+	if resp.Body != nil {
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				log.Fatal(err)
+			}
+		}(resp.Body)
+		decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
+		if decodeErr != nil {
+			log.Fatal(decodeErr)
+		}
+	}
+	response = "The next tasks are done:\n"
+	f := func(c rune) bool {
+		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
+	}
+	for i := range taskList {
+		if strings.HasPrefix(taskList[i].Name, "Homework") {
+			taskNum := strings.FieldsFunc(taskList[i].Name, f)[1]
+			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
+		}
+	}
+	return response, getErr
 }
 
 // Retrieves a URL for a done homework

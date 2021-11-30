@@ -82,7 +82,6 @@
 1. How to run Gitlab in docker container
 ```
 1 dec 2021 TIL
-```
 1. `8` Best practices for using Docker:
     1) use `official` Docker image as a base image
     2) use `specific` Docker image version
@@ -92,5 +91,4 @@
     6) make use of `Multi-Stage` builds
     7) use the `Least Privileged` user
     8) scan your images for `Security Vulnerability` 
-        
-```
+    

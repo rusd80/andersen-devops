@@ -42,7 +42,8 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	}
 	// If the known command received call the sendReply function
 	botMessage := strings.ToLower(body.Message.Text)
-	if botMessage == "/tasks" || botMessage == "/topics" || botMessage == "/stats" || botMessage == "/task" || botMessage == "/start" || botMessage == "/git" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
+	if botMessage == "/tasks" || botMessage == "/topics" || botMessage == "/stats" || botMessage == "/task" ||
+		botMessage == "/start" || botMessage == "/git" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
 		if err != nil {
 			log.Panic(err)
@@ -63,7 +64,7 @@ func sendReply(chatID int64, command string) error {
 	if err != nil {
 		return err
 	}
-	//Creates an instance of our custom sendMessageReqBody Type
+	//Creates an instance of sendMessageReqBody type
 	reqBody := &sendMessageReqBody{
 		ChatID: chatID,
 		Text:   text,
@@ -95,6 +96,7 @@ func sendReply(chatID int64, command string) error {
 
 // handler of commands received from bot
 func commandHandler(command string) (string, error) {
+	log.Println("Command handling: " + command)
 	switch command {
 	case "/tasks":
 		response, err := fetchTasks()

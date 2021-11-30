@@ -26,12 +26,15 @@ func main() {
 	appPort = os.Getenv("PORT")
 	repo = os.Getenv("REPO")
 	if botToken == "" || appPort == "" || repo == "" {
-		log.Fatal("Can`t read .env file")
+		log.Fatal("Can`t read required params from .env file")
 		return
+	} else {
+		log.Println("Parameters from .env are read")
 	}
 	apiUrlContents = "https://api.github.com/repos" + repo + "/contents"
 	apiUrlTopics = "https://api.github.com/repos" + repo + "/topics"
 	apiUrlCommits = "https://api.github.com/repos" + repo + "/stats/participation"
+	log.Println("Bot starting...")
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
 		log.Fatal(err)

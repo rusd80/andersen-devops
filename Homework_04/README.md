@@ -9,7 +9,7 @@
 4. `/tasks` - get full list of your done homeworks directories 
 5. `/task#` - get URL to directory of homework number #
 6. `/topics` - show list of topics of the repository
-7. `/stats` - shows number of commits made this week and the previous week
+7. `/stats` - show number of commits made this week and the previous week
 
 ### If you don't have "white" IP, use tunnel [ngrok](https://ngrok.com/)
 ```

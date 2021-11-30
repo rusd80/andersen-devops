@@ -26,23 +26,4 @@ function print_frame(){
   echo $separator
 }
 
-# define "help" message
-help=$'
-usage: ./script.sh [NUMBER OF LINES][STATE OF CONNECTION][MODE][TOOL][PROCESS NAME or PID]
-
-Script uses this parameters:
-NUMBER OF LINES: number of lines to output
-STATE OF CONNECTION: "-a" all connections, default - only ESTABLISHED
-MODE: "-w" - more information, default - only organization name
-TOOL: "-t" - `ss`, default - netstat
-PROCESS NAME OR PID - name or PID of process to analyze its connections
-
-Shows the names of the organizations with which the PROCESS has
-established a connection. The list of organizations is sorted in
-descending order of the number of connections
-
-Examples:
-$ ./script.sh -n 6 chrome
-$ ./script.sh -n 8 -a -w -t zoom
-$ ./script.sh -h or --help'
 

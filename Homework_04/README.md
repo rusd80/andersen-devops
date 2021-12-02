@@ -20,7 +20,7 @@ Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090        
 Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090       
 ```
-### or use PAAS like [heroku](https://heroku.com/)
+### or use a PAAS like [heroku](https://heroku.com/)
 
 ## To run bot:
 1. Clone repo with `git clone` command 

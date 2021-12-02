@@ -1,7 +1,5 @@
 #!/bin/env bash
 
-. ./functions.sh
-
 # define "help" message
 help=$'
 usage:
@@ -23,7 +21,37 @@ $ ./script.sh -n 6 chrome
 $ ./script.sh -n 8 -a -w -t zoom
 $ ./script.sh -h or --help'
 
+# function returns IP`s, uses netstat or ss utility
+function get_ips(){
+  # get connections with netstat
+  [ $tool == 'netstat' ] && local res=$(sudo netstat -tunapl | grep $state |awk -v pat=$1 '$0 ~pat {print $5}' | cut -d: -f1 | sort | uniq -c |
+sort | grep -oP '(\d+\.){3}\d+' )
+  # get connections with ss
+  [ $tool == 'ss' ] && local res=$(ss -tunap | grep $state | awk -v pat=$1 '$0 ~pat {print $6}' | sort | uniq -c | grep -oP '(\d+\.){3}\d+' )
+  echo $res
+}
+
+# function gets information in 'normal' or 'wide' mode
+function get_info(){
+  # normal mode - organization only
+  [ $mode == 'normal' ] && local res=$(whois $1 | awk -F':' '/^Organization|^role/ {print $2}' | cut -d'(' -f1 )
+  # wide mode - more info
+  [ $mode == 'wide' ] && local res=$(whois $1 | awk -F':' '/^Organization|organization|^OrgName|org-name|ddress|^OrgTechEmail|mailbox/ {print $2}' ORS="  |  "  )
+  echo $res
+}
+
+# frame print
+function print_frame(){
+  separator="+--------------------|--------------------------------------------------+"
+  echo $separator
+  printf "%-70s | \n" \
+                 "| Number of connects |  Organization         [ Info ]        "
+  echo $separator
+}
+# return HELP message
 [[ $1 == '-h' || $1 == '--help' ]] && echo "$help" && exit 0
+
+# check utilities installed
 [ -z "$(which ss)" ] && err "Please install iproute2 package." && exit 2
 [ -z "$(which whois)" ] && err "Please install whois package." && exit 2
 [ -z "$(which netstat)" ] && err "Please install netstat package." && exit 2

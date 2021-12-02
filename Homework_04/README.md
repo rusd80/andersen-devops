@@ -27,13 +27,13 @@ Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://loca
 2. Create your own bot using `BotFather` and save `SECRET TOKEN`
 3. Создайте в папке проекта файл `.env` и внесите в него секретные переменные:
 
-`TOKEN="2144052527:AAELCMqXtbt9jKclUW...` - your bot's secret token
+`TOKEN="2144052527:AAELCMqXtbt9jKclUW...` - your bot ``SECRET TOKEN``
 
 `PORT="8080"` - port that will be used by your app
 
 `REPO="/rusd80/andersen-devops"` - your repository on GitHub.com
 
-Also, you should set `WEBHOOK` to allow telegram send POST requests to your app:
+4. Also, you should set `WEBHOOK` to allow telegram send POST requests to your app:
 ```
 curl --location --request POST 'https://api.telegram.org/bot21440#####:AAELCMqXtbt9jKclUWVZj####SECRET####/setWebhook?url=https://1cd2-176-53-210-50.ngrok.io'
 ```

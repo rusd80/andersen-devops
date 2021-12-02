@@ -7,19 +7,19 @@ sudo netstat -tunapl | awk '/firefox/ {print $5}' | cut -d: -f1 | sort | uniq -c
 
 This script displays the name of the organizations that own the IP addresses to which the process, 
 passed as a parameter to this script, connects. The process can be specified by name or by process ID.
-`netstat`   - is a command-line utility lets you discover which sockets are connected and which sockets are listening.
-`-t` or --tcp - shows tcp ports
-`-u` or --udp - shows udp ports
-`-n` shows network addresses as numbers, shows ports as numbers
-`-a` shows the status of all sockets; normally, sockets used by server processes are not shown
-`-p` displays the PID/Name of the process that created the socket
-`-l` or --listening - shows only the listening ports
-`awk '/firefox/ {print $5}'`  - looks for lines containing `firefox` and outputs only the fifth column (ip+port), returns list of sockets
-`cut -d: -f1` - cuts the ports, leaving only IP
-`sort` - sorts by the first character in the string
-`uniq -c` looking for repeats of IP addresses and output the number of these repeats
-`sort` - sorts by the first character in the string
-`tail -n5` - shows last five IP addresses
+- `netstat` - is a command-line utility lets you discover which sockets are connected and which sockets are listening.
+- `-t` or --tcp - shows tcp ports
+- `-u` or --udp - shows udp ports
+4) `-n` shows network addresses as numbers, shows ports as numbers
+5) `-a` shows the status of all sockets; normally, sockets used by server processes are not shown
+6) `-p` displays the PID/Name of the process that created the socket
+7) `-l` or --listening - shows only the listening ports
+8) `awk '/firefox/ {print $5}'`  - looks for lines containing `firefox` and outputs only the fifth column (ip+port), returns list of sockets
+9) `cut -d: -f1` - cuts the ports, leaving only IP
+10) `sort` - sorts by the first character in the string
+11) `uniq -c` looking for repeats of IP addresses and output the number of these repeats
+12) `sort` - sorts by the first character in the string
+13) `tail -n5` - shows last five IP addresses
 `grep -oP '(\d+\.){3}\d+'` outputs only IP (one or more decimal numbers with a dot three times and the last octet of IP)
 The result is sending to the `while loop` in which we run all the IP addresses through the `whois` command. 
 Command `awk` searches for lines with `Organization` 
@@ -58,3 +58,4 @@ script.sh -n 7 zoom
       1                 Facebook, Inc. (THEFA-3) | Facebook, Inc. | 1601 Willow Rd. | US | domain@facebook.com |
 
 ```
+

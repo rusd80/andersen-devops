@@ -48,7 +48,8 @@ Options:
 script.sh -n 10 -a -w -t chrome
 script.sh -n 7 zoom
 ```
-### Result of `script.sh -n 10 -a -w -t chrome`:
+### Result:
+run `script.sh -n 10 -a -w -t chrome`
 ```
 | Number of connects |  Organization         [ Info ]                  | 
 +--------------------|--------------------------------------------------+

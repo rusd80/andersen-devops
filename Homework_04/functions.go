@@ -15,11 +15,12 @@ import (
 )
 
 var (
-	taskErr  string     = "This homework is`nt done!"
-	cmdErr   string     = "Unknown command. Please try /help."
-	taskList []homeWork // array of jsons to get from GitHub API
-	response string
-	start    string = "Hello! This bot can get info about your homeworks from Github repository " +
+	taskErr     string     = "This homework is not done!"
+	cmdErr      string     = "Unknown command. Please try /help."
+	taskListErr string     = "Can`t get task list"
+	taskList    []homeWork // array of jsons to get from GitHub API
+	response    string
+	start       string = "Hello! This bot can get info about your homeworks from Github repository " +
 		"Use /help command to learn how to use bot."
 	help string = "Commands available:\n/tasks shows list of completed homeworks in your repo\n" +
 		"/task##, where ## is number of homework, shows URL to this homework directory\n" +
@@ -36,8 +37,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 	body := &webHookReqBody{}
 	// Decodes the incoming request into our custom webhook req body type
 	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
-		log.Printf("An error occured (webHookHandler)")
-		log.Panic(err)
+		log.Println("An error occurred (webHookHandler)", err)
 		return
 	}
 	// If the known command received call the sendReply function
@@ -46,13 +46,13 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 		botMessage == "/start" || botMessage == "/git" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
 		if err != nil {
-			log.Panic(err)
+			log.Println("sendReply method error", err)
 			return
 		}
 	} else {
 		err := sendReply(body.Message.Chat.ID, "/badCommand")
 		if err != nil {
-			log.Panic(err)
+			log.Println("sendReply method error", err)
 			return
 		}
 	}
@@ -100,9 +100,6 @@ func commandHandler(command string) (string, error) {
 	switch command {
 	case "/tasks":
 		response, err := fetchTasks()
-		if err != nil {
-			log.Fatal(err)
-		}
 		return response, err
 	case "/start":
 		response = start
@@ -115,16 +112,10 @@ func commandHandler(command string) (string, error) {
 		return response, nil
 	case "/topics":
 		response, err := getTopics()
-		if err != nil {
-			log.Fatal(err)
-		}
-		return response, nil
+		return response, err
 	case "/stats":
 		response, err := getStats()
-		if err != nil {
-			log.Fatal(err)
-		}
-		return response, nil
+		return response, err
 	case "/git":
 		return "github.com" + repo, nil
 	case "/badCommand":
@@ -133,8 +124,15 @@ func commandHandler(command string) (string, error) {
 	default:
 		pattern := re.MustCompile("/task([0-9]+)")
 		if pattern.MatchString(command) {
+			taskList, err := fetchTasks()
+			if err != nil {
+				log.Println("get task list error", err)
+				return taskListErr, err
+			}
 			taskNumber := pattern.FindStringSubmatch(command)[1]
-			response = getTaskUrl(taskNumber)
+			if len(taskList) > 0 {
+				response = getTaskUrl(taskNumber)
+			}
 		} else {
 			response = cmdErr
 		}
@@ -146,28 +144,30 @@ func commandHandler(command string) (string, error) {
 func fetchTasks() (string, error) {
 	resp, getErr := http.Get(apiUrlContents)
 	if getErr != nil {
-		log.Fatal(getErr)
-	}
-	if resp.Body != nil {
-		defer func(Body io.ReadCloser) {
-			err := Body.Close()
-			if err != nil {
-				log.Fatal(err)
+		log.Println("can't get tasks", getErr)
+		response = taskListErr
+	} else {
+		if resp.Body != nil {
+			defer func(Body io.ReadCloser) {
+				closeErr := Body.Close()
+				if closeErr != nil {
+					log.Fatalln(closeErr)
+				}
+			}(resp.Body)
+			decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
+			if decodeErr != nil {
+				log.Fatalln(decodeErr)
 			}
-		}(resp.Body)
-		decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
-		if decodeErr != nil {
-			log.Fatal(decodeErr)
 		}
-	}
-	response = "The next tasks are done:\n"
-	f := func(c rune) bool {
-		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
-	}
-	for i := range taskList {
-		if strings.HasPrefix(taskList[i].Name, "Homework") {
-			taskNum := strings.FieldsFunc(taskList[i].Name, f)[1]
-			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
+		response = "The next tasks are done:\n"
+		checkName := func(chr rune) bool {
+			return !unicode.IsLetter(chr) && !unicode.IsNumber(chr)
+		}
+		for i := range taskList {
+			if strings.HasPrefix(taskList[i].Name, "Homework") {
+				taskNum := strings.FieldsFunc(taskList[i].Name, checkName)[1]
+				response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
+			}
 		}
 	}
 	return response, getErr
@@ -193,7 +193,8 @@ func getTaskUrl(taskNum string) string {
 func getTopics() (string, error) {
 	response, getErr := http.Get(apiUrlTopics)
 	if getErr != nil {
-		log.Fatal(getErr)
+		log.Println("can't get topics", getErr)
+		return "can't get topics", getErr
 	}
 	if response.Body != nil {
 		defer func(Body io.ReadCloser) {
@@ -204,13 +205,14 @@ func getTopics() (string, error) {
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&topicList)
 		if err != nil {
-			return "", err
+			log.Fatalln("can`t decode response body", err)
 		}
 	}
 	if len(topicList.Names) > 0 {
-		return "Topics of this repository are: " + strings.Join(topicList.Names, ", "), getErr
+		return "Topics of this repository are: " + strings.Join(topicList.Names, ", "), nil
 	} else {
-		return "Topics of this repository are not specified", getErr
+		// topic list can be empty if not specified
+		return "Topics of this repository are not specified", nil
 	}
 }
 
@@ -218,26 +220,28 @@ func getTopics() (string, error) {
 func getStats() (string, error) {
 	response, getErr := http.Get(apiUrlCommits)
 	if getErr != nil {
-		log.Fatal(getErr)
+		log.Println("can`t get commit statistics", getErr)
+		return "can`t get commit statistics", getErr
 	}
 	if response.Body != nil {
 		defer func(Body io.ReadCloser) {
 			err := Body.Close()
 			if err != nil {
-				log.Fatal(err)
+				log.Fatalln(err)
 			}
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&commitList)
 		if err != nil {
-			return "", err
+			log.Fatalln("can`t decode response body", err)
 		}
 	}
 	if len(commitList.All) > 0 {
 		respMessage := "Statistics of commits: \n" +
 			"This week: " + strconv.Itoa(commitList.All[len(commitList.All)-1]) + " \n" +
 			"Previous week: " + strconv.Itoa(commitList.All[len(commitList.All)-2])
-		return respMessage, getErr
+		return respMessage, nil
 	} else {
-		return "Commit statistics are empty.", getErr
+		err := errors.New("received empty commit statistics list")
+		return "Commit statistics are empty.", err
 	}
 }

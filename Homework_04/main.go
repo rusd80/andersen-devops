@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
@@ -16,17 +17,28 @@ var (
 	apiUrlCommits  string // full URL of GitHub API /statistics participation
 )
 
+// function defines log file
+func init() {
+	logFile, err := os.Create("log.txt")
+	if err != nil {
+		log.Fatalln("can't create log.txt", err)
+	}
+	log.SetOutput(logFile)
+}
+
+// main function
 func main() {
 	loadErr := godotenv.Load(".env")
 	if loadErr != nil {
-		return
+		log.Fatalln("can`t load .env file content", loadErr)
 	}
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")
 	repo = os.Getenv("REPO")
 	if botToken == "" || appPort == "" || repo == "" {
-		log.Fatal("Can`t read required params from .env file")
+		err := errors.New(".env getenv method error")
+		log.Fatalln("Can`t read required params from .env file", err)
 		return
 	} else {
 		log.Println("Parameters from .env are read")
@@ -37,7 +49,7 @@ func main() {
 	log.Println("Bot starting...")
 	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln("Error of http listener", err)
 		return
 	}
 }

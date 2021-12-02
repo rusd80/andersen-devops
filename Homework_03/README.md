@@ -1,24 +1,30 @@
 ### Lesson 3 homework
 
-## What this one-liner does
-This script displays the name of the organizations that own the IP addresses to which the process, passed as a parameter to this script, connects. The process can be specified by name or by proccess ID.
+## What this one-liner does:
 ```
-netstat - is a command-line utility for working with the network, for displaying various network parameters depending on the specified options.
--t or --tcp - show tcp ports
--u or --udp - show udp ports
--n Show network addresses as numbers. Show ports as number, not letters. (443 - https, etc.)
--a Shows the status of all sockets; normally, sockets used by server processes are not shown.
--p Display the PID/Name of the process that created the socket.
--l or --listening - view only the listening ports.
-awk '/firefox/ {print $5}'in the output of the netstat command, we look for lines containing firefox and output the fifth column (ip+port)
-cut -d: -f1 we cut the ports, leaving only IP
-sort sort (by the first character in the string)
-uniq -c looking for repeats of IP addresses and output the number of these repeats
-sort sort again
-tail -n5 show last five IP addresses
-grep -oP '(\d+\.){3}\d+' output only IP (one or more decimal numbers with a dot three times and the last octet of IP)
-We send the result to the while loop in which we run all the IP addresses through the whois command. Using awk, we search for lines with Organization: and deduce the fact that after the : (name of the organization)
+sudo netstat -tunapl | awk '/firefox/ {print $5}' | cut -d: -f1 | sort | uniq -c | sort | tail -n5 | grep -oP '(\d+\.){3}\d+' | while read IP ; do whois $IP | awk -F':' '/^Organization/ {print $2}' ; done
 ```
+
+This script displays the name of the organizations that own the IP addresses to which the process, 
+passed as a parameter to this script, connects. The process can be specified by name or by process ID.
+`netstat`   - is a command-line utility lets you discover which sockets are connected and which sockets are listening.
+`-t` or --tcp - shows tcp ports
+`-u` or --udp - shows udp ports
+`-n` shows network addresses as numbers, shows ports as numbers
+`-a` shows the status of all sockets; normally, sockets used by server processes are not shown
+`-p` displays the PID/Name of the process that created the socket
+`-l` or --listening - shows only the listening ports
+`awk '/firefox/ {print $5}'`  - looks for lines containing `firefox` and outputs only the fifth column (ip+port), returns list of sockets
+`cut -d: -f1` - cuts the ports, leaving only IP
+`sort` - sorts by the first character in the string
+`uniq -c` looking for repeats of IP addresses and output the number of these repeats
+`sort` - sorts by the first character in the string
+`tail -n5` - shows last five IP addresses
+`grep -oP '(\d+\.){3}\d+'` outputs only IP (one or more decimal numbers with a dot three times and the last octet of IP)
+The result is sending to the `while loop` in which we run all the IP addresses through the `whois` command. 
+Command `awk` searches for lines with `Organization` 
+`ss` - is a tool that is used for displaying network socket related information on a Linux system. The tool displays
+more detailed information that the netstat command which is used for displaying active socket connections.
 
 ### Manual
 Download script and run it. You should specify process name or PID as the script argument. Run this script as root to see more details.
@@ -27,11 +33,11 @@ usage:
 ./script.sh [options] <process>
 
 Options:
--n  <number>          number of lines to output,default value: 5
--a                    all connections, default - only ESTABLISHED
--w                    more information, default - only ORGANIZATION name
+-n  <number>          number of lines to output, default value: 5
+-a                    all connections, default - only `ESTABLISHED`
+-w                    more information, default - only `ORGANIZATION` name
 -t                    `ss`, default - `netstat`
-<process>             PROCESS NAME OR PID - name or PID of process to analyze its connections
+<process>             `PROCESS NAME OR PID` - name or PID of process to analyze its connections
 
 
 ## Usage example:

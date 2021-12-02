@@ -42,13 +42,13 @@ Options:
 <process>             `PROCESS NAME OR PID` - name or PID of process to analyze its connections
 
 
-## Usage example:
+### Usage example:
 
 ```
 script.sh -n 10 -a -w -t chrome
 script.sh -n 7 zoom
 ```
-## Result of `script.sh -n 10 -a -w -t chrome`:
+### Result of `script.sh -n 10 -a -w -t chrome`:
 ```
 | Number of connects |  Organization         [ Info ]                  | 
 +--------------------|--------------------------------------------------+

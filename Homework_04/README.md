@@ -11,7 +11,7 @@
 6. `/topics` - show list of topics of the repository
 7. `/stats` - show number of commits made this week and the previous week
 
-### If you don't have "white" IP, use tunnel [ngrok](https://ngrok.com/)
+### If you don't have "white" IP, use http tunnel [ngrok](https://ngrok.com/)
 ```
 Session Status                online                                                             
 Version                       2.3.40                                                             
@@ -20,7 +20,7 @@ Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090        
 Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090       
 ```
-or use PAAS like [heroku](https://heroku.com/)
+### or use PAAS like [heroku](https://heroku.com/)
 
 ## To run bot:
 1. Clone repo with `git clone` command 

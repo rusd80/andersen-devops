@@ -92,3 +92,6 @@
     7) use the `Least Privileged` user
     8) scan your images for `Security Vulnerability` 
     
+2 dec 2021 TIL
+1. Logging in golang
+2. dev.to is very useful resource

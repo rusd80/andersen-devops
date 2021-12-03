@@ -1,6 +1,6 @@
 ## Task 4
 
-### This bot can get repository list from Github
+### This bot can get repository list from GitHub
 
 ### Bot provides this commands:
 1. `/start` - greeting and basic info about bot

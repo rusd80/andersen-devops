@@ -1,6 +1,6 @@
-## Task 4
+## Task 4 - bot displays info about repository's content 
 
-### This bot can get repository list from GitHub
+### This bot uses `WebHook` 
 
 ### Bot provides this commands:
 1. `/start` - greeting and basic info about bot

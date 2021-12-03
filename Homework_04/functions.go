@@ -16,10 +16,12 @@ import (
 
 var (
 	taskEmpty   string     = "This homework is not done!"
-	cmdErr      string     = "Unknown command. Please try /help."
-	taskListErr string     = "Can`t get task list from GitHub API"
+	cmdErrMsg   string     = "Unknown command. Please try /help."
+	taskListErr string     = "Can't get task list from GitHub API"
 	topicErr    string     = "Can't get topics from GitHub API"
 	statErr     string     = "Can't get statistics from GitHub API"
+	topicEmpty  string     = "Topics of this repository are not defined"
+	statEmpty   string     = "Commit statistics data is empty"
 	taskList    []homeWork // array of jsons to get from GitHub API
 	response    string
 	start       string = "Hello! This bot can get info about your homeworks from Github repository " +
@@ -29,12 +31,12 @@ var (
 		"/git - returns URL of your repository\n" +
 		"/topics - returns repository's list of topics\n" +
 		"/stats - returns number of commits made this week and previous week"
-	topicList  allTopics
-	commitList commitStats
+	topicList  allTopics   // variable for request with topics
+	commitList commitStats // variable for request with commit statistics
 )
 
 // handler of sent requests from bot using webhook
-func webHookHandler(rw http.ResponseWriter, req *http.Request) {
+func webHookHandler(_ http.ResponseWriter, req *http.Request) {
 	// Create our web hook request body type instance
 	body := &webHookReqBody{}
 	// Decodes the incoming request into our custom webhook req body type
@@ -64,7 +66,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 func sendReply(chatID int64, command string) error {
 	text, err := commandHandler(command)
 	if err != nil {
-		log.Println(err)
+		log.Println("error from command handler", err)
 	}
 	//Creates an instance of sendMessageReqBody type
 	reqBody := &sendMessageReqBody{
@@ -74,6 +76,7 @@ func sendReply(chatID int64, command string) error {
 	// Convert our custom type into json format
 	reqBytes, err := json.Marshal(reqBody)
 	if err != nil {
+		log.Println("request body message marshal error", err)
 		return err
 	}
 	// Make a request to send our message using the POST method to the telegram bot API
@@ -83,11 +86,13 @@ func sendReply(chatID int64, command string) error {
 		bytes.NewBuffer(reqBytes),
 	)
 	if err != nil {
+		log.Println("http.post error while sending message to telegram", err)
 		return err
 	}
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
+			log.Fatalln(err)
 		}
 	}(resp.Body)
 	if resp.StatusCode != http.StatusOK {
@@ -121,7 +126,7 @@ func commandHandler(command string) (string, error) {
 	case "/git":
 		return "github.com" + repo, nil
 	case "/badCommand":
-		response = cmdErr
+		response = cmdErrMsg
 		cmdErr := errors.New("unknown command received from telegram")
 		log.Println(cmdErr)
 		return response, nil
@@ -138,13 +143,13 @@ func commandHandler(command string) (string, error) {
 				response = getTaskUrl(taskNumber)
 			}
 		} else {
-			response = cmdErr
+			response = cmdErrMsg
 		}
 		return response, nil
 	}
 }
 
-// function of fetching content from GitHub repository
+// function fetching content from GitHub repository
 func fetchTasks() (string, error) {
 	resp, err := http.Get(apiUrlContents)
 	if err != nil {
@@ -160,7 +165,7 @@ func fetchTasks() (string, error) {
 		}(resp.Body)
 		err := json.NewDecoder(resp.Body).Decode(&taskList)
 		if err != nil {
-			log.Println(err)
+			log.Println("tasks decoding error", err)
 			return taskListErr, err
 		}
 	}
@@ -209,7 +214,7 @@ func getTopics() (string, error) {
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&topicList)
 		if err != nil {
-			log.Println("can`t decode response body", err)
+			log.Println("can't decode response body", err)
 			return topicErr, err
 		}
 	}
@@ -217,7 +222,7 @@ func getTopics() (string, error) {
 		return "Topics of this repository are: " + strings.Join(topicList.Names, ", "), nil
 	} else {
 		// topic list can be empty if not specified
-		return "Topics of this repository are not specified", nil
+		return topicEmpty, nil
 	}
 }
 
@@ -225,7 +230,7 @@ func getTopics() (string, error) {
 func getStats() (string, error) {
 	response, err := http.Get(apiUrlCommits)
 	if err != nil {
-		log.Println("can`t get commit statistics", err)
+		log.Println("can't get commit statistics", err)
 		return statErr, err
 	}
 	if response.Body != nil {
@@ -237,7 +242,7 @@ func getStats() (string, error) {
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&commitList)
 		if err != nil {
-			log.Println("can`t decode response body", err)
+			log.Println("can't decode response body", err)
 			return statErr, err
 		}
 	}
@@ -247,6 +252,6 @@ func getStats() (string, error) {
 			"Previous week: " + strconv.Itoa(commitList.All[len(commitList.All)-2])
 		return respMessage, nil
 	} else {
-		return "Commit data is empty", nil
+		return statEmpty, nil
 	}
 }

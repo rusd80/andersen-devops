@@ -28,18 +28,17 @@ func init() {
 
 // main function
 func main() {
-	loadErr := godotenv.Load(".env")
-	if loadErr != nil {
-		log.Fatalln("can`t load .env file content", loadErr)
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalln("can`t load .env file content", err)
 	}
 	// get telegram bot token from .env
 	botToken = os.Getenv("TOKEN")
 	appPort = os.Getenv("PORT")
 	repo = os.Getenv("REPO")
 	if botToken == "" || appPort == "" || repo == "" {
-		err := errors.New(".env getenv method error")
-		log.Fatalln("Can`t read required params from .env file", err)
-		return
+		dotEnvErr := errors.New(".env getenv method error")
+		log.Fatalln("Can`t read required params from .env file", dotEnvErr)
 	} else {
 		log.Println("Parameters from .env are read")
 	}
@@ -47,9 +46,8 @@ func main() {
 	apiUrlTopics = "https://api.github.com/repos" + repo + "/topics"
 	apiUrlCommits = "https://api.github.com/repos" + repo + "/stats/participation"
 	log.Println("Bot starting...")
-	err := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
-	if err != nil {
-		log.Fatalln("Error of http listener", err)
-		return
+	httpErr := http.ListenAndServe(":"+appPort, http.HandlerFunc(webHookHandler))
+	if httpErr != nil {
+		log.Fatalln("Error of http listener", httpErr)
 	}
 }

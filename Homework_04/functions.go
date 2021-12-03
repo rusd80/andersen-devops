@@ -15,9 +15,11 @@ import (
 )
 
 var (
-	taskErr     string     = "This homework is not done!"
+	taskEmpty   string     = "This homework is not done!"
 	cmdErr      string     = "Unknown command. Please try /help."
-	taskListErr string     = "Can`t get task list"
+	taskListErr string     = "Can`t get task list from GitHub API"
+	topicErr    string     = "Can't get topics from GitHub API"
+	statErr     string     = "Can't get statistics from GitHub API"
 	taskList    []homeWork // array of jsons to get from GitHub API
 	response    string
 	start       string = "Hello! This bot can get info about your homeworks from Github repository " +
@@ -62,7 +64,7 @@ func webHookHandler(rw http.ResponseWriter, req *http.Request) {
 func sendReply(chatID int64, command string) error {
 	text, err := commandHandler(command)
 	if err != nil {
-		return err
+		log.Println(err)
 	}
 	//Creates an instance of sendMessageReqBody type
 	reqBody := &sendMessageReqBody{
@@ -120,6 +122,8 @@ func commandHandler(command string) (string, error) {
 		return "github.com" + repo, nil
 	case "/badCommand":
 		response = cmdErr
+		cmdErr := errors.New("unknown command received from telegram")
+		log.Println(cmdErr)
 		return response, nil
 	default:
 		pattern := re.MustCompile("/task([0-9]+)")
@@ -142,35 +146,35 @@ func commandHandler(command string) (string, error) {
 
 // function of fetching content from GitHub repository
 func fetchTasks() (string, error) {
-	resp, getErr := http.Get(apiUrlContents)
-	if getErr != nil {
-		log.Println("can't get tasks", getErr)
-		response = taskListErr
-	} else {
-		if resp.Body != nil {
-			defer func(Body io.ReadCloser) {
-				closeErr := Body.Close()
-				if closeErr != nil {
-					log.Fatalln(closeErr)
-				}
-			}(resp.Body)
-			decodeErr := json.NewDecoder(resp.Body).Decode(&taskList)
-			if decodeErr != nil {
-				log.Fatalln(decodeErr)
+	resp, err := http.Get(apiUrlContents)
+	if err != nil {
+		log.Println("can't get tasks", err)
+		return taskListErr, err
+	}
+	if resp.Body != nil {
+		defer func(Body io.ReadCloser) {
+			closeErr := Body.Close()
+			if closeErr != nil {
+				log.Fatalln(closeErr)
 			}
-		}
-		response = "The next tasks are done:\n"
-		checkName := func(chr rune) bool {
-			return !unicode.IsLetter(chr) && !unicode.IsNumber(chr)
-		}
-		for i := range taskList {
-			if strings.HasPrefix(taskList[i].Name, "Homework") {
-				taskNum := strings.FieldsFunc(taskList[i].Name, checkName)[1]
-				response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
-			}
+		}(resp.Body)
+		err := json.NewDecoder(resp.Body).Decode(&taskList)
+		if err != nil {
+			log.Println(err)
+			return taskListErr, err
 		}
 	}
-	return response, getErr
+	response = "The next tasks are done:\n"
+	checkName := func(chr rune) bool {
+		return !unicode.IsLetter(chr) && !unicode.IsNumber(chr)
+	}
+	for i := range taskList {
+		if strings.HasPrefix(taskList[i].Name, "Homework") {
+			taskNum := strings.FieldsFunc(taskList[i].Name, checkName)[1]
+			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
+		}
+	}
+	return response, nil
 }
 
 // Retrieves a URL for a done homework
@@ -184,28 +188,29 @@ func getTaskUrl(taskNum string) string {
 		}
 	}
 	if url == "" {
-		url = taskErr
+		url = taskEmpty
 	}
 	return url
 }
 
 // function gets topics from GitHub repository
 func getTopics() (string, error) {
-	response, getErr := http.Get(apiUrlTopics)
-	if getErr != nil {
-		log.Println("can't get topics", getErr)
-		return "can't get topics", getErr
+	response, err := http.Get(apiUrlTopics)
+	if err != nil {
+		log.Println("can't get topics", err)
+		return topicErr, err
 	}
 	if response.Body != nil {
 		defer func(Body io.ReadCloser) {
 			err := Body.Close()
 			if err != nil {
-				log.Fatal(err)
+				log.Fatalln(err)
 			}
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&topicList)
 		if err != nil {
-			log.Fatalln("can`t decode response body", err)
+			log.Println("can`t decode response body", err)
+			return topicErr, err
 		}
 	}
 	if len(topicList.Names) > 0 {
@@ -218,10 +223,10 @@ func getTopics() (string, error) {
 
 // function gets commit statistics from GitHub repository
 func getStats() (string, error) {
-	response, getErr := http.Get(apiUrlCommits)
-	if getErr != nil {
-		log.Println("can`t get commit statistics", getErr)
-		return "can`t get commit statistics", getErr
+	response, err := http.Get(apiUrlCommits)
+	if err != nil {
+		log.Println("can`t get commit statistics", err)
+		return statErr, err
 	}
 	if response.Body != nil {
 		defer func(Body io.ReadCloser) {
@@ -232,7 +237,8 @@ func getStats() (string, error) {
 		}(response.Body)
 		err := json.NewDecoder(response.Body).Decode(&commitList)
 		if err != nil {
-			log.Fatalln("can`t decode response body", err)
+			log.Println("can`t decode response body", err)
+			return statErr, err
 		}
 	}
 	if len(commitList.All) > 0 {
@@ -241,7 +247,6 @@ func getStats() (string, error) {
 			"Previous week: " + strconv.Itoa(commitList.All[len(commitList.All)-2])
 		return respMessage, nil
 	} else {
-		err := errors.New("received empty commit statistics list")
-		return "Commit statistics are empty.", err
+		return "Commit data is empty", nil
 	}
 }

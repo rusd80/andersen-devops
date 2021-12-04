@@ -62,7 +62,7 @@ func webHookHandler(_ http.ResponseWriter, req *http.Request) {
 	}
 }
 
-// function sends response to bot via http.Post
+// function sends response to telegram via http.Post
 func sendReply(chatID int64, command string) error {
 	text, err := commandHandler(command)
 	if err != nil {
@@ -101,7 +101,7 @@ func sendReply(chatID int64, command string) error {
 	return err
 }
 
-// handler of commands received from bot
+// handler of commands received from telegram
 func commandHandler(command string) (string, error) {
 	log.Println("Command handling: " + command)
 	switch command {
@@ -132,6 +132,7 @@ func commandHandler(command string) (string, error) {
 		return response, nil
 	default:
 		pattern := re.MustCompile("/task([0-9]+)")
+		// if command consists pattern
 		if pattern.MatchString(command) {
 			taskList, err := fetchTasks()
 			if err != nil {
@@ -169,13 +170,16 @@ func fetchTasks() (string, error) {
 			return taskListErr, err
 		}
 	}
-	response = "The next tasks are done:\n"
+	response = "The next tasks are done:\n" // response string initial line
+	// returns true is chr not letter and not number
 	checkName := func(chr rune) bool {
 		return !unicode.IsLetter(chr) && !unicode.IsNumber(chr)
 	}
 	for i := range taskList {
 		if strings.HasPrefix(taskList[i].Name, "Homework") {
+			// split of string by not letter and not number, get second element/
 			taskNum := strings.FieldsFunc(taskList[i].Name, checkName)[1]
+			// add line with task##
 			response += fmt.Sprintf("%d. %s", i+1, fmt.Sprintf("/task%s\n", taskNum))
 		}
 	}

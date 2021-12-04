@@ -95,3 +95,12 @@
 2 dec 2021 TIL
 1. Logging in golang
 2. dev.to is very useful resource
+
+3 dec 2021 TIL
+1. Docker containerization iz very useful
+2. Portainer
+
+4 dec 2021 TIL
+1. Pyinstaller and nuitka. Awesome utilities converting python into binaries
+2. Binary can be runned in empty Scratch image
+3.

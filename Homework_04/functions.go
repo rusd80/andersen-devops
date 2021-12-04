@@ -35,7 +35,7 @@ var (
 	commitList commitStats // variable for request with commit statistics
 )
 
-// handler of sent requests from bot using webhook
+// handler of received requests from telegram via webhook
 func webHookHandler(_ http.ResponseWriter, req *http.Request) {
 	// Create our web hook request body type instance
 	body := &webHookReqBody{}
@@ -46,6 +46,7 @@ func webHookHandler(_ http.ResponseWriter, req *http.Request) {
 	}
 	// If the known command received call the sendReply function
 	botMessage := strings.ToLower(body.Message.Text)
+	// command checking
 	if botMessage == "/tasks" || botMessage == "/topics" || botMessage == "/stats" || botMessage == "/task" ||
 		botMessage == "/start" || botMessage == "/git" || botMessage == "/help" || strings.HasPrefix(botMessage, "/task") {
 		err := sendReply(body.Message.Chat.ID, body.Message.Text)
@@ -54,6 +55,7 @@ func webHookHandler(_ http.ResponseWriter, req *http.Request) {
 			return
 		}
 	} else {
+		// case with unknown command
 		err := sendReply(body.Message.Chat.ID, "/badCommand")
 		if err != nil {
 			log.Println("sendReply method error", err)
@@ -203,7 +205,7 @@ func getTaskUrl(taskNum string) string {
 	return url
 }
 
-// function gets topics from GitHub repository
+// function retrieves topics from GitHub repository
 func getTopics() (string, error) {
 	response, err := http.Get(apiUrlTopics)
 	if err != nil {
@@ -232,7 +234,7 @@ func getTopics() (string, error) {
 	}
 }
 
-// function gets commit statistics from GitHub repository
+// function retrieves commit statistics from GitHub repository
 func getStats() (string, error) {
 	response, err := http.Get(apiUrlCommits)
 	if err != nil {

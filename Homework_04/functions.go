@@ -131,6 +131,7 @@ func commandHandler(command string) (string, error) {
 		log.Println(cmdErr)
 		return response, nil
 	default:
+		// case of task## with number
 		pattern := re.MustCompile("/task([0-9]+)")
 		// if command consists pattern
 		if pattern.MatchString(command) {
@@ -223,6 +224,7 @@ func getTopics() (string, error) {
 		}
 	}
 	if len(topicList.Names) > 0 {
+		// build a string with list of topics
 		return "Topics of this repository are: " + strings.Join(topicList.Names, ", "), nil
 	} else {
 		// topic list can be empty if not specified
@@ -251,6 +253,7 @@ func getStats() (string, error) {
 		}
 	}
 	if len(commitList.All) > 0 {
+		// build a string with commit statistics
 		respMessage := "Statistics of commits: \n" +
 			"This week: " + strconv.Itoa(commitList.All[len(commitList.All)-1]) + " \n" +
 			"Previous week: " + strconv.Itoa(commitList.All[len(commitList.All)-2])

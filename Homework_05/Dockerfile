@@ -16,7 +16,7 @@ RUN pip3 install -r /app/requirements.txt
 RUN PYTHONOPTIMIZE=1 pyinstaller --onefile --strip --paths /venv/lib/site-packages \
 			-a --clean --upx-dir=/usr/bin/ app.py
 RUN cat /app/app.spec
-RUN staticx -l /lib/x86_64-linux-gnu/libgcc_s.so.1 /app/dist/app appc
+RUN staticx -l /lib/x86_64-linux-gnu/libgcc_s.so.1 --strip /app/dist/app appc
 
 FROM scratch AS tiny
 WORKDIR /

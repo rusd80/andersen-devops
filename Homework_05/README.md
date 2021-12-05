@@ -8,7 +8,7 @@ Hints:
 • use the `minimal` possible setup
 • 100MB is a lot ;-)
 
-### Size of image: 9.79 Mb.
+#### Size of image: 9.79 Mb.
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 
@@ -17,19 +17,19 @@ To run: `docker run -it -p 8080:8080 rusd80/devops:v1`
 
 #### Compressed by Docker Hub image size is 9.07 Mb
 
-## Usage with CLI:
+### Usage with CLI:
 ```
 curl -d'{"CountryCode":"ru"}' http://127.0.0.1:8080
 ```
-## Result:
+### Result:
 ```
 Country: Russia, capital: Moscow, currency: RUB, languages(native): Russian(Русский)
 ```
-## Using browser:
+### Using browser:
 ```
 http://127.0.0.1:8080/country/jp
 ```
-## Result:
+### Result:
 ```
 country: Japan, capital: Tokyo, currency: JPY, languages(native): Japanese(日本語)
 ```

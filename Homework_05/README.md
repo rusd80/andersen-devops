@@ -12,8 +12,10 @@ Hints:
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 
-То build: `docker build . -t tiny`
-To run: `docker run -rm -p 8080:8080 tiny`
+То build: `docker build . -t rusd80/devops:tiny`
+To run: `docker run -it -p 8080:8080 rusd80/devops:v1`
+
+## Compressed by Docker Hub image size is ###9.07 mB
 
 ## Usage:
 ```

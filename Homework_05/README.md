@@ -15,13 +15,21 @@ Application receives 2-literal code of country and returns some info about this 
 То build: `docker build . -t rusd80/devops:tiny`
 To run: `docker run -it -p 8080:8080 rusd80/devops:v1`
 
-#### Compressed by Docker Hub image size is 9.07 mB
+#### Compressed by Docker Hub image size is 9.07 Mb
 
-## Usage:
+## Usage with CLI:
 ```
 curl -d'{"CountryCode":"ru"}' http://127.0.0.1:8080
 ```
 ## Result:
 ```
 Country: Russia, capital: Moscow, currency: RUB, languages(native): Russian(Русский)
+```
+## Using browser:
+```
+http://127.0.0.1:8080/country/jp
+```
+## Result:
+```
+country: Japan, capital: Tokyo, currency: JPY, languages(native): Japanese(日本語)
 ```

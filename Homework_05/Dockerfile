@@ -12,11 +12,11 @@ RUN . venv/bin/activate
 
 RUN pip3 install Flask
 RUN pip3 install -r /app/requirements.txt
-RUN PYTHONOPTIMIZE=1 pyinstaller --onefile --strip -F --add-data "countries.json:countries.json" --add-data "languages.json:languages.json" \
-			--paths /venv/lib/site-packages \
-			-a --clean --upx-dir=/usr/bin/ app.py
 
-RUN staticx -l /lib/x86_64-linux-gnu/libgcc_s.so.1 --strip /app/dist/app appc
+RUN PYTHONOPTIMIZE=1 pyinstaller --onefile --strip --paths /venv/lib/site-packages \
+			-a --clean --upx-dir=/usr/bin/ app.py
+RUN cat /app/app.spec
+RUN staticx -l /lib/x86_64-linux-gnu/libgcc_s.so.1 /app/dist/app appc
 
 FROM scratch AS tiny
 WORKDIR /
@@ -25,4 +25,4 @@ COPY --from=compiler /app/appc .
 COPY --from=compiler /app/countries.json .
 COPY --from=compiler /app/languages.json .
 EXPOSE 8080
-CMD ["/appc"]  
+CMD ["/appc"]

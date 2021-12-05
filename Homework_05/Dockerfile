@@ -1,12 +1,13 @@
 FROM python:3.8-slim AS compiler
 WORKDIR /app
 COPY /app /app 
-RUN apt-get update && apt-get install -y upx patchelf binutils libgcc1
-RUN pip3 install pyinstaller virtualenv staticx
+RUN apt-get update
+RUN apt-get install -y upx patchelf binutils libgcc1
 
+RUN pip3 install pyinstaller virtualenv staticx
 RUN pip freeze > requirements.txt
 RUN python -m venv venv
-RUN ENV PATH $PATH:venv/bin/activate
+ENV PATH $PATH:venv/bin/activate
 RUN . venv/bin/activate
 
 RUN pip3 install Flask -r /app/requirements.txt

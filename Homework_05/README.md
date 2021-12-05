@@ -8,7 +8,7 @@ Hints:
 • use the `minimal` possible setup
 • 100MB is a lot ;-)
 
-### Size of image: 9.79 Mb
+### Size of image: 9.79 Mb.
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 

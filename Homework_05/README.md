@@ -12,8 +12,8 @@ Hints:
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 
-То build image: `docker build . -t tiny`
-To run image: `docker run -rm -p 8080:8080 tiny`
+То build: `docker build . -t tiny`
+To run: `docker run -rm -p 8080:8080 tiny`
 
 ## Usage:
 ```

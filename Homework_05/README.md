@@ -8,14 +8,14 @@ Hints:
 • use the `minimal` possible setup
 • 100MB is a lot ;-)
 
-#### Size of image: 9.79 Mb.
+#### Size of image: 9.32 Mb.
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 
 То build: `docker build . -t rusd80/devops:tiny`
 To run: `docker run -it -p 8080:8080 rusd80/devops:v1`
 
-#### Image Compressed by Docker Hub: 9.07 Mb
+#### Image Compressed by Docker Hub after `docker push`: 8.8 Mb
 
 ### Usage with CLI:
 ```

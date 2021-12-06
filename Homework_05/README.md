@@ -9,7 +9,7 @@ Hints:
 • 100MB is a lot ;-)
 
 #### Image is available on Docker Hub and has size: 8.4 Mb
-
+![dockerhub](https://i.imgur.com/h2G0lTW.png[/img])
 https://hub.docker.com/repository/docker/rusd80/devops
 
 Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.

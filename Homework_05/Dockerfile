@@ -1,10 +1,10 @@
-FROM python:3.8-slim AS compiler
+FROM python:3.6-slim AS compiler
 
 WORKDIR /app
 COPY /app /app
 
 RUN apt-get update \
-&& apt-get install -y upx patchelf binutils libgcc1 \
+&& apt-get install -y patchelf binutils libgcc1 upx\
 && pip3 install pyinstaller virtualenv staticx \
 && pip freeze > requirements.txt \
 && python -m venv venv
@@ -13,7 +13,7 @@ RUN apt-get update \
 ENV PATH $PATH:venv/bin/activate
 
 RUN . venv/bin/activate
-RUN pip3 install Flask
+RUN pip3 install Flask==1.1.2
 RUN pip3 install -r /app/requirements.txt
 
 # pyinstaller optimizes our flask app

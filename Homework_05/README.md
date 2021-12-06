@@ -8,8 +8,7 @@ Hints:
 • use the `minimal` possible setup
 • 100MB is a lot ;-)
 
-#### Size of image: 9.32 Mb.
-#### Image is available on Docker Hub and has size: 8.8 Mb
+#### Image is available on Docker Hub and has size: 8.4 Mb
 
 https://hub.docker.com/repository/docker/rusd80/devops
 

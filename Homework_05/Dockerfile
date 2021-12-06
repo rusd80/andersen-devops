@@ -20,7 +20,7 @@ RUN pip3 install -r /app/requirements.txt
 RUN PYTHONOPTIMIZE=1 pyinstaller --onefile --strip --paths /venv/lib/site-packages \
 			-a --clean --upx-dir=/usr/bin/ app.py \
 # staticx converts app to static binary that can be run on Scratch image \
-# also libgcc library is needed
+# also libgcc library is needed for on scratch
 && staticx -l /lib/x86_64-linux-gnu/libgcc_s.so.1 --strip /app/dist/app appc
 
 RUN mkdir /app/tmp

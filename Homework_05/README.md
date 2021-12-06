@@ -12,10 +12,11 @@ Hints:
 ![dockerhub](https://i.imgur.com/h2G0lTW.png[/img])
 https://hub.docker.com/repository/docker/rusd80/devops
 
-Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
+То build locally: `docker build . -t rusd80/devops:tiny`
+To run: `docker run -it -p 8080:8080 rusd80/devops:tiny`
 
-То build: `docker build . -t rusd80/devops:tiny`
-To run: `docker run -it -p 8080:8080 rusd80/devops:v1`
+### Flask application:
+Application receives 2-literal code of country and returns some info about this country: name, capital, currency, languages.
 
 ### Usage with CLI:
 ```

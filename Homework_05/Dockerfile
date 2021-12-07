@@ -5,7 +5,7 @@ COPY /app /app
 
 RUN apt-get update \
 && apt-get install -y patchelf binutils libgcc1 upx\
-&& pip3 install pyinstaller virtualenv staticx \
+&& pip3 install pyinstaller virtualenv staticx
 
 # create virtualenv
 RUN python -m venv venv

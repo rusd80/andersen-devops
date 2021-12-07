@@ -1,6 +1,7 @@
 from flask import Flask, json, request
 from json import load
 
+
 # function returns info about country
 def get_info(query: str) -> str:
     with open('countries.json', 'r', encoding='utf-8') as file:

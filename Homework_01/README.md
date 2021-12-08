@@ -61,27 +61,27 @@
 1. How to use Maven
 2. Nexus, JFrog;
 ```
-27 nov 2021 TIL
+27 nov 2021 TIL:
 ```
 1. How to receive POST request in Go
 2. Typing in go
 ```
-28 nov 2021 TIL
+28 nov 2021 TIL:
 ```
 1. How to parse JSON and array of JSON's
 2. How to run package of several Go files
 3.
 ```
-29 nov 2021 TIL
+29 nov 2021 TIL:
 ```
 1. API of GitHub
 2. Interfaces in Go
 ```
-30 nov 2021 TIL
+30 nov 2021 TIL:
 ```
 1. How to run Gitlab in docker container
 ```
-1 dec 2021 TIL
+1 dec 2021 TIL:
 1. `8` Best practices for using Docker:
     1) use `official` Docker image as a base image
     2) use `specific` Docker image version
@@ -92,15 +92,27 @@
     7) use the `Least Privileged` user
     8) scan your images for `Security Vulnerability` 
     
-2 dec 2021 TIL
+2 dec 2021 TIL:
+```
 1. Logging in golang
 2. dev.to is very useful resource
-
-3 dec 2021 TIL
+```
+3 dec 2021 TIL:
+```
 1. Docker containerization iz very useful
 2. Portainer
-
-4 dec 2021 TIL
+```
+4 dec 2021 TIL:
+```
 1. Pyinstaller and nuitka. Awesome utilities converting python into binaries
 2. Binary can be runned in empty Scratch image
-3.
+```
+6 dec 2021 TIL:
+```
+1. Binary may require gcc library or other 
+2. Binary requires /tmp directory on Scratch image
+```
+7 dec 2021 TIL:
+```
+1. IaaC by AWS Cloudformation: yaml or json file
+```

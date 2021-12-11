@@ -6,6 +6,13 @@ resource "aws_instance" "server" {
   ami = "ami-05d34d340fb1d89e5"
   instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.server.id]
+  user_data = <<EOF
+#!/bin/bash
+sudo yum -y update
+sudo amazon-linux-extras install nginx1 -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+EOF
 }
 
 resource "aws_security_group" "server" {
@@ -13,23 +20,28 @@ resource "aws_security_group" "server" {
   description = "Allow traffic"
 
   ingress {
-    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.main.cidr_block]
-    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+    cidr_blocks      = ["0.0.0.0/0"]
   }
+
 
   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "allow_traffic"
   }
 }

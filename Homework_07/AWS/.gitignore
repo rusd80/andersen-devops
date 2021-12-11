@@ -2,3 +2,7 @@ keys.txt
 .terraform
 *.hclterraform paln
 credentials.sh
+*.hcl
+*.info
+*.tfstale
+*.backup

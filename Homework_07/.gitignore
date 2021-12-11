@@ -1,1 +1,4 @@
 keys.txt
+.terraform
+*.hclterraform paln
+credentials.sh

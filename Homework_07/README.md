@@ -2,7 +2,7 @@
 
 Write a Terraform template for a chart.
 
-![](/home/cube366/andersen_devops/Homework_07/hw7.png)
+![](https://i.imgur.com/0p70xP7.png[/img])
 Add. challenge:
 • Do the same but in Azure ARM or GCP Deploy Manager and redraw the diagram
 • For AWS, update the diagram, add missing entities.

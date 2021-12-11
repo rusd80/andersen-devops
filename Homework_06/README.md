@@ -1,7 +1,7 @@
 ### Optional homework:
 Write AWS CloudFormation template for diagram
 ...
-![](/home/cube366/andersen_devops/Homework_06/hw6.png)
+![](https://i.imgur.com/0p70xP7.png[/img])
 
 Add. challenge:
 • Do the same but in Azure ARM or GCP Deploy Manager and redraw the diagram

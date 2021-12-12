@@ -1,4 +1,3 @@
-
 # Security group for App ELB
 resource "aws_security_group" "elb" {
   name        = "security_group_elb"

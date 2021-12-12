@@ -46,7 +46,7 @@ resource "aws_launch_configuration" "web" {
   }
 }
 
-
+# autoscaling group of ec2's
 resource "aws_autoscaling_group" "web" {
   name                 = "ASG-${aws_launch_configuration.web.name}"
   launch_configuration = aws_launch_configuration.web.name

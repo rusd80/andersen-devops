@@ -1,4 +1,3 @@
-
 # VPC for this task, will content two subnets in different availablity zones
 resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr

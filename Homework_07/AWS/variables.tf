@@ -1,4 +1,4 @@
-
+# variables for terraform script
 variable "prefix" {
     description = "prefix for name tag"
     type = string

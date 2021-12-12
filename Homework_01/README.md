@@ -116,3 +116,7 @@
 ```
 1. IaaC by AWS Cloudformation: yaml or json file
 ```
+1 dec 2021 TIL:
+
+Terraform best practices:
+1) 

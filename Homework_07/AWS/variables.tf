@@ -16,3 +16,9 @@ variable "region" {
     type = string
     default = "eu-central-1"
 }
+
+variable "key_name" {
+    description = "name of ssh key"
+    type = string
+    default = "eu-key"
+}

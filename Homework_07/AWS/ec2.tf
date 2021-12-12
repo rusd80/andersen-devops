@@ -1,6 +1,6 @@
 
 resource "aws_lb" "web" {
-  name = "appLoadBalancer"
+  name = "myALB"
   load_balancer_type = "application"
   subnets         = [aws_subnet.subnet_a.id, aws_subnet.subnet_b.id]
   security_groups = [aws_security_group.elb.id]

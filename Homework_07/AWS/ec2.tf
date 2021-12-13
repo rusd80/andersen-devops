@@ -1,4 +1,4 @@
-
+# application level load balancer
 resource "aws_lb" "web" {
   name = "myALB"
   load_balancer_type = "application"
@@ -7,6 +7,7 @@ resource "aws_lb" "web" {
   enable_deletion_protection = false
 }
 
+# HTTP listener
 resource "aws_lb_listener" "web" {
   load_balancer_arn = aws_lb.web.arn
   port = "80"
@@ -24,23 +25,19 @@ resource "aws_lb_target_group" "web" {
   vpc_id = aws_vpc.vpc.id
 }
 
-
-resource "aws_iam_instance_profile" "instprof" {
-  name = "${var.prefix}-instprof"
+resource "aws_iam_instance_profile" "inst_profile" {
+  name = "${var.prefix}-instance_profile"
   role = aws_iam_role.role_ec2_s3.name
 }
-
 
 resource "aws_launch_configuration" "web" {
   name_prefix     = "${var.prefix}LC_"
   image_id        = "ami-05d34d340fb1d89e5"
   instance_type   = "t2.micro"
-  iam_instance_profile = aws_iam_instance_profile.instprof.id
+  iam_instance_profile = aws_iam_instance_profile.inst_profile.id
   security_groups = [aws_security_group.web.id]
-
   key_name  = aws_key_pair.generated_key.key_name
   user_data = file("script.sh")
-
   lifecycle {
     create_before_destroy = true
   }
@@ -56,7 +53,6 @@ resource "aws_autoscaling_group" "web" {
   health_check_type    = "ELB"
   vpc_zone_identifier  = [aws_subnet.subnet_a.id, aws_subnet.subnet_b.id]
   target_group_arns    = [aws_lb_target_group.web.arn]
-
 
   lifecycle {
     create_before_destroy = true

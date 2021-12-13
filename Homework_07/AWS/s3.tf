@@ -1,4 +1,3 @@
-
 # allow access to s3 from ec2
 resource "aws_iam_role" "role_ec2_s3" {
   name_prefix = "${var.prefix}"

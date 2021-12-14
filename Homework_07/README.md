@@ -11,3 +11,7 @@ Add. challenge:
 • For AWS EC2 add AutoRecovery option;
 • Write a wrapper script and add the ability to run different Envs with different parameters.
 ```
+
+Results:
+1. Main task done with Amazon Web Services
+2. 

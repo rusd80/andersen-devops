@@ -32,12 +32,12 @@ resource "aws_iam_instance_profile" "inst_profile" {
 
 resource "aws_launch_configuration" "web" {
   name_prefix     = "${var.prefix}LC_"
-  image_id        = "ami-05d34d340fb1d89e5"
-  instance_type   = "t2.micro"
+  image_id        = local.ami
+  instance_type   = local.instance_type
   iam_instance_profile = aws_iam_instance_profile.inst_profile.id
   security_groups = [aws_security_group.web.id]
   key_name  = aws_key_pair.generated_key.key_name
-  user_data = file("script.sh")
+  user_data = file(local.script)
   lifecycle {
     create_before_destroy = true
   }

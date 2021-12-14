@@ -6,7 +6,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-# Internet gateway gives for subnets internet access
+# Create Internet gateway for subnets internet access
 resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.vpc.id}"
   tags = {
@@ -17,7 +17,7 @@ resource "aws_internet_gateway" "gw" {
 # Create a subnet in availability zone A
 resource "aws_subnet" "subnet_a" {
   vpc_id                  = "${aws_vpc.vpc.id}"
-  cidr_block              = "10.0.11.0/24"
+  cidr_block              = local.cidr_block_A
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available.names[0]
 }
@@ -25,7 +25,7 @@ resource "aws_subnet" "subnet_a" {
 # Create a subnet in availability zone B
 resource "aws_subnet" "subnet_b" {
   vpc_id                  = "${aws_vpc.vpc.id}"
-  cidr_block              = "10.0.12.0/24"
+  cidr_block              = local.cidr_block_B
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available.names[1]
 }

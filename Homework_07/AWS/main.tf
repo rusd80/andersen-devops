@@ -1,3 +1,10 @@
+#-------------------------------------------------
+#   Terraform and AWS training
+#
+#   Andersen devops courses
+#
+#   By Dmitrii Rusakov
+#-------------------------------------------------
 terraform {
   required_providers {
     aws = {
@@ -9,12 +16,12 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-central-1"
+  region = local.region
 }
 
 data "aws_availability_zones" "available" {}
 
-# output
+# Dns name output
 output "web_loadbalancer_url" {
   value = aws_lb.web.dns_name
 }

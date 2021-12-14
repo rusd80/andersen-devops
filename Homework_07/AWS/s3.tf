@@ -41,21 +41,17 @@ resource "aws_iam_role_policy" "pol" {
 
 # Create S3 bucket for web page storage
 resource "aws_s3_bucket" "b" {
-  bucket = "bucketrusd80"
+  bucket = local.bucket_name
   acl    = "private"
   versioning {
     enabled = true
-  }
-  tags = {
-    Name        = "andersen training bucket"
-    Environment = "dev"
   }
 }
 
 # define index.html as object available by key
 resource "aws_s3_bucket_object" "object" {
   bucket = aws_s3_bucket.b.id
-  key    = "index.html"
-  source = "index.html"
-  etag = filemd5("index.html")
+  key    = local.file_name
+  source = local.file_name
+  etag = filemd5(local.file_name)
 }

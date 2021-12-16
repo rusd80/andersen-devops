@@ -1,5 +1,4 @@
-
-resource "azurerm_storage_account" "myacc" {
+/*resource "azurerm_storage_account" "myacc" {
   name                     = "examplestoracc8011"
   resource_group_name      = azurerm_resource_group.main.name
   location                 = azurerm_resource_group.main.location
@@ -12,14 +11,6 @@ resource "azurerm_storage_container" "mycont" {
   storage_account_name  = azurerm_storage_account.myacc.name
   container_access_type = "private"
 }
-
-resource "azurerm_storage_share_file" "myfile" {
-  name                  = "file"
-  storage_account_name  = azurerm_storage_account.myacc.name
-  container_access_type = "private"
-  storage_share_id      = ""
-}
-
 resource "azurerm_storage_blob" "myblob" {
   name                   = "index.html"
   storage_account_name   = azurerm_storage_account.myacc.name
@@ -28,3 +19,4 @@ resource "azurerm_storage_blob" "myblob" {
   source                 = "index.html"
 }
 
+*/

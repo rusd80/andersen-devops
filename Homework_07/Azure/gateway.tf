@@ -74,7 +74,6 @@ resource "azurerm_application_gateway" "network" {
 
   backend_address_pool {
     name = local.backend_address_pool_name
-
   }
 
   backend_http_settings {

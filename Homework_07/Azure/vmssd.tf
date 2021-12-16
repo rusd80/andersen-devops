@@ -1,13 +1,10 @@
 
-resource "azurerm_virtual_machine_scale_set" "example" {
+resource "azurerm_virtual_machine_scale_set" "vmset" {
   name                = "mytestscaleset-1"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   zones = [1,2]
-
-  #automatic_os_upgrade = true
   upgrade_policy_mode  = "Manual"
-
 
   sku {
     name     = "Standard_B1s"
@@ -18,13 +15,12 @@ resource "azurerm_virtual_machine_scale_set" "example" {
   storage_profile_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
-
   }
 
   storage_profile_os_disk {
-    name              = ""
+    name              = "vm_os_disc"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -34,7 +30,7 @@ resource "azurerm_virtual_machine_scale_set" "example" {
     lun           = 0
     caching       = "ReadWrite"
     create_option = "Empty"
-    disk_size_gb  = 2
+    disk_size_gb  = 1
   }
 
   os_profile {

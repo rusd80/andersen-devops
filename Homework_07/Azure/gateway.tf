@@ -25,7 +25,7 @@ resource "azurerm_subnet" "backend" {
 
 }
 
-resource "azurerm_public_ip" "example" {
+resource "azurerm_public_ip" "my_ip" {
   name                = "my-public-ip"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
@@ -69,7 +69,7 @@ resource "azurerm_application_gateway" "network" {
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
-    public_ip_address_id = azurerm_public_ip.example.id
+    public_ip_address_id = azurerm_public_ip.my_ip.id
   }
 
   backend_address_pool {
@@ -101,9 +101,3 @@ resource "azurerm_application_gateway" "network" {
     backend_http_settings_name = local.http_setting_name
   }
 }
-/*
-resource "azurerm_network_interface_application_gateway_backend_address_pool_association" "example" {
-  network_interface_id    = azurerm_network_interface.example.id
-  ip_configuration_name   = "testconfiguration1"
-  backend_address_pool_id = azurerm_application_gateway.network.backend_address_pool[0].id
-}*/

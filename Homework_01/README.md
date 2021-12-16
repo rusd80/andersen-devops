@@ -130,10 +130,22 @@ Terraform best practices:
 
 11 dec 2021 TIL:
 
-
-
-12 dec 2021 TIL:
+```
+1. Basic knowleges about the Azure cloud services
 
 ```
-1/
+
+14 dec 2021 TIL:
+
+```
+AWS network services:
+
+VPC peering
+Endpoint Services
+Site-to-Site VPN
+Client VPN
+Transit Gateway
+Direct Connect
+CloudFront
+Route 53
 ```

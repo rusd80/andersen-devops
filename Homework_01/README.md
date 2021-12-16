@@ -116,7 +116,24 @@
 ```
 1. IaaC by AWS Cloudformation: yaml or json file
 ```
-1 dec 2021 TIL:
+10 dec 2021 TIL:
 
 Terraform best practices:
-1) 
+ - Manipulate state only through TF commands
+ - Always set up a share remote storage
+ - Use State Locking
+ - ack up State File
+ - Use 1 State per Environment
+ - Host TF code in Git repository
+ - use CI for TF Code 
+ - use TS commands only in automated build
+
+11 dec 2021 TIL:
+
+
+
+12 dec 2021 TIL:
+
+```
+1/
+```

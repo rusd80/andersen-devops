@@ -1,10 +1,13 @@
 resource "azurerm_virtual_machine_scale_set" "vmset" {
-  name                = "mytestscaleset-1"
+  name                = "vm-scale-set"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   zones = [1,2]
   upgrade_policy_mode  = "Manual"
-
+  boot_diagnostics {
+    enabled = "true"
+    storage_uri = ""
+}
   sku {
     name     = "Standard_B1s"
     tier     = "Standard"
@@ -61,6 +64,6 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
   }
 }
 
-output "backend_address_pool" {
-    value = "${azurerm_application_gateway.network.backend_address_pool[*].id}"
-}
+#output "backend_address_pool" {
+#    value = "${azurerm_application_gateway.network.backend_address_pool[*].id}"
+#}

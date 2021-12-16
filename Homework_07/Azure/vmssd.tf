@@ -1,4 +1,3 @@
-
 resource "azurerm_virtual_machine_scale_set" "vmset" {
   name                = "mytestscaleset-1"
   location            = azurerm_resource_group.main.location
@@ -58,12 +57,10 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
       primary                                = true
       subnet_id                              = azurerm_subnet.backend.id
       application_gateway_backend_address_pool_ids = "${azurerm_application_gateway.network.backend_address_pool[*].id}"
-
     }
   }
-
-
 }
+
 output "backend_address_pool" {
     value = "${azurerm_application_gateway.network.backend_address_pool[*].id}"
 }

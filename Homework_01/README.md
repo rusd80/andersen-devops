@@ -126,7 +126,7 @@ Terraform best practices:
  - Use 1 State per Environment
  - Host TF code in Git repository
  - use CI for TF Code 
- - use TS commands only in automated build
+ - use TF commands only in automated build
 
 11 dec 2021 TIL:
 
@@ -149,3 +149,8 @@ Direct Connect
 CloudFront
 Route 53
 ```
+
+16 dec 2021 TIL:
+
+1. How to use azure file share
+2. File share can be mounted as a folder on linux VM

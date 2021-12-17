@@ -12,7 +12,7 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
   sku {
     name     = "Standard_B1s"
     tier     = "Standard"
-    capacity = 2
+    capacity = 1
   }
 
   storage_profile_image_reference {

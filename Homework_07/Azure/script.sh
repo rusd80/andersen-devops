@@ -13,5 +13,7 @@ fi
 sudo chmod 600 /etc/smbcredentials/storagepagerusd801.cred
 sudo bash -c 'echo "//storagepagerusd801.file.core.windows.net/myfilestorage /mnt/myfilestorage cifs nofail,vers=3.0,credentials=/etc/smbcredentials/storagepagerusd801.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
 sudo mount -t cifs //storagepagerusd801.file.core.windows.net/myfilestorage /mnt/myfilestorage -o vers=3.0,credentials=/etc/smbcredentials/storagepagerusd801.cred,dir_mode=0777,file_mode=0777,serverino
-sudo mv /mnt/myfilestorage/index.html /var/www/html/index.nginx-debian.html
+sudo cp /mnt/myfilestorage/index.html /var/www/html/
+sudo mv /var/www/html/index.html /var/www/html/index.nginx-debian.html
 sudo service nginx restart
+sudo umount /mnt/myfilestorage

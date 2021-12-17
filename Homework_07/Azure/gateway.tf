@@ -1,8 +1,10 @@
+# create main resource group
 resource "azurerm_resource_group" "main" {
   name     = "my_resources"
   location = "North Europe"
 }
 
+# create virtual network
 resource "azurerm_virtual_network" "network" {
   name                = "my_network"
   resource_group_name = azurerm_resource_group.main.name
@@ -10,6 +12,7 @@ resource "azurerm_virtual_network" "network" {
   address_space       = ["10.0.0.0/16"]
 }
 
+# create frontend subnet
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
   resource_group_name  = azurerm_resource_group.main.name
@@ -17,6 +20,7 @@ resource "azurerm_subnet" "frontend" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
+# create backend subnet
 resource "azurerm_subnet" "backend" {
   name                 = "backend"
   resource_group_name  = azurerm_resource_group.main.name
@@ -25,13 +29,13 @@ resource "azurerm_subnet" "backend" {
 
 }
 
+# create public ip
 resource "azurerm_public_ip" "my_ip" {
   name                = "my-public-ip"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   allocation_method   = "Dynamic"
   domain_name_label = "mygatewaytest8011"
-
 }
 
 #&nbsp;since these variables are re-used - a locals block makes this more maintainable
@@ -45,6 +49,7 @@ locals {
   redirect_configuration_name    = "${azurerm_virtual_network.network.name}-rdrcfg"
 }
 
+# create application gateway
 resource "azurerm_application_gateway" "network" {
   name                = "my_app_gateway80"
   resource_group_name = azurerm_resource_group.main.name

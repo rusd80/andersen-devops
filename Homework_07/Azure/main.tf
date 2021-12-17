@@ -1,4 +1,4 @@
-
+# define provider
 terraform {
   required_providers {
     azurerm = {
@@ -13,6 +13,7 @@ provider "azurerm" {
   features {}
 }
 
+# crate network security group
 resource "azurerm_network_security_group" "net_security" {
   name                = "acceptanceTestSecurityGroup1"
   location            = azurerm_resource_group.main.location

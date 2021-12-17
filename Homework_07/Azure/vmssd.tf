@@ -1,3 +1,4 @@
+# create virtual maсhine set
 resource "azurerm_virtual_machine_scale_set" "vmset" {
   name                = "vm-scale-set"
   location            = azurerm_resource_group.main.location
@@ -39,7 +40,6 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
     computer_name_prefix = "testvm"
     admin_username       = "myadmin"
     custom_data = base64encode(file("script.sh"))
-
   }
 
   os_profile_linux_config {
@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
 
     ssh_keys {
       path     = "/home/myadmin/.ssh/authorized_keys"
-      key_data = file("~/.ssh/id_rsa.pub")
+      key_data = file("~/.ssh/adminuser.pub")
     }
   }
 
@@ -64,6 +64,3 @@ resource "azurerm_virtual_machine_scale_set" "vmset" {
   }
 }
 
-#output "backend_address_pool" {
-#    value = "${azurerm_application_gateway.network.backend_address_pool[*].id}"
-#}

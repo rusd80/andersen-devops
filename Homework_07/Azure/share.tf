@@ -1,3 +1,4 @@
+# create storage account
 resource "azurerm_storage_account" "shareacc" {
   name                     = "storagepagerusd801"
   resource_group_name      = azurerm_resource_group.main.name
@@ -6,13 +7,15 @@ resource "azurerm_storage_account" "shareacc" {
   account_replication_type = "LRS"
 }
 
+# create storage share
 resource "azurerm_storage_share" "shares" {
-  name                 = "sharefile"
+  name                 = "myfilestorage"
   storage_account_name = azurerm_storage_account.shareacc.name
   quota                = 1
 }
 
-resource "azurerm_storage_share_file" "myfile" {
+# create share_file and upload file
+resource "azurerm_storage_share_file" "mysharedfile" {
   name             = "index.html"
   storage_share_id = azurerm_storage_share.shares.id
   source           = "index.html"

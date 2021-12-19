@@ -9,7 +9,6 @@ region_src = 'eu-central-1'
 
 def lambda_handler(event, context):
     current_time = datetime.datetime.now(datetime.timezone.utc)
-    client = boto3.client('iam')
     owner = boto3.client('sts').get_caller_identity()['Account']
     client = boto3.client("ec2", region_src)
 
@@ -20,7 +19,7 @@ def lambda_handler(event, context):
 
     for snap in snap_list:
         result['Id'] = snap['SnapshotId']
-        result['Size'] = snap['VolumeSize']
+        result['Size, '] = snap['VolumeSize']
         result['StartTime'] = str(snap['StartTime'])
         st = snap['StartTime']
         diff = (current_time - st).seconds

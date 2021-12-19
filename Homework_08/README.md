@@ -18,5 +18,5 @@ aws lambda invoke --function-name=my_lambda --region=eu-central-1 --cli-binary-f
 Result:
 ```
 cat lambda_output.txt
-[{"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}, {"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}, {"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}]c
+[{"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}, {"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}, {"Id": "snap-068360ab20ce04c29", "Size": 8, "StartTime": "2021-12-19 11:30:01.308000+00:00"}]
 ```

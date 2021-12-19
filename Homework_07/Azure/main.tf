@@ -41,7 +41,5 @@ resource "azurerm_network_security_group" "net_security" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-  tags = {
-    environment = "Production"
-  }
+
 }

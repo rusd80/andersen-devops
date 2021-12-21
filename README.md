@@ -4,7 +4,7 @@ Hi, my name is Dmitriy. I'm from Saint-Petersburg, Russia. I’m an automation e
 of experience with programming of programmable-logic controllers 
 and human-machine interface devices. I'm interested in computer science,
 programming and management methodologies such as LEAN and Kanban.
-I'm currently learning Linux administration, Docker and Kubernetes.
+I'm currently learning Linux administration, AWS, Azure and Kubernetes.
 At now become DevOps engineer is my dream and challenge. 
 
 ### Why am I interested in this course?:

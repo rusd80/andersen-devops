@@ -5,7 +5,7 @@ What this script should do:
 - Show a list of Snapshots that are older then N days or hours
 - Optional: filter by Tag: Value
 - Optional: add option for copy selected Snapshot to S3
-- U can come up with a your own case
+- You can come up with your own case
 
 This task is done using AWS Lambda Function:
 - Collect a list of EBS Snapshot Id, StartTime and size

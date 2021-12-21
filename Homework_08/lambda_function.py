@@ -6,7 +6,6 @@ import boto3, os, datetime
 
 region_src = 'eu-central-1'
 
-
 def lambda_handler(event, context):
     current_time = datetime.datetime.now(datetime.timezone.utc)
     owner = boto3.client('sts').get_caller_identity()['Account']

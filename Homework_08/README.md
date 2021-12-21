@@ -11,6 +11,7 @@ This task is done using AWS Lambda Function:
 - Collect a list of EBS Snapshot Id, StartTime and size
 - Show a list of Snapshots that are older then N days or hours
 
+Lambda function was created with AWS Console. Also lambda requires a special role.
 Command:
 ```
 aws lambda invoke --function-name=my_lambda --region=eu-central-1 --cli-binary-format raw-in-base64-out --payload '{"days": 0, "hours": 12}' lambda_output.txt

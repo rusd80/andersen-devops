@@ -17,7 +17,7 @@ This Docker image created using:
 - pyinstaller
 - upx
 - staticx
-- scratch as a final image
+- scratch as a base of final image
 
 То build locally: `docker build . -t rusd80/devops:tiny`
 To run: `docker run -it -p 8080:8080 rusd80/devops:tiny`

@@ -5,9 +5,9 @@
 sudo netstat -tunapl | awk '/firefox/ {print $5}' | cut -d: -f1 | sort | uniq -c | sort | tail -n5 | grep -oP '(\d+\.){3}\d+' | while read IP ; do whois $IP | awk -F':' '/^Organization/ {print $2}' ; done
 ```
 
-This script displays the name of the organizations that own the IP addresses to which the process, 
+This script displays names of the organizations that own the IP addresses to which the process, 
 passed as a parameter to this script, connects. The process can be specified by name or by process ID.
-- `netstat` - is a command-line utility lets you discover which sockets are connected and which sockets are listening.
+- `netstat` - is a command-line utility allows you to discover which sockets are connected and which sockets are listening.
 - `-t` or --tcp - shows tcp ports
 - `-u` or --udp - shows udp ports
 - `-n` shows network addresses as numbers, shows ports as numbers
@@ -17,7 +17,7 @@ passed as a parameter to this script, connects. The process can be specified by 
 - `awk '/firefox/ {print $5}'`  - looks for lines containing `firefox` and outputs only the fifth column (ip+port), returns list of sockets
 - `cut -d: -f1` - cuts the ports, leaving only IP
 - `sort` - sorts by the first character in the string
-- `uniq -c` looking for repeats of IP addresses and output the number of these repeats
+- `uniq -c` looks for repeats of IP addresses and output the number of these repeats
 - `sort` - sorts by the first character in the string
 - `tail -n5` - shows last five IP addresses
 - `grep -oP '(\d+\.){3}\d+'` outputs only IP (one or more decimal numbers with a dot three times and the last octet of IP)

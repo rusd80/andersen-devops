@@ -20,7 +20,7 @@ Web Interface                 http://127.0.0.1:4040
 Forwarding                    http://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090        
 Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://localhost:8090       
 ```
-### or use a PAAS like [heroku](https://heroku.com/)
+### or deploy it to cloud or use a PAAS like [heroku](https://heroku.com/)
 
 ## To run bot:
 1. Clone repo with `git clone` command 
@@ -33,7 +33,7 @@ Forwarding                    https://1cd2-176-53-210-50.ngrok.io -> http://loca
 
 `REPO="/rusd80/andersen-devops"` - your repository on GitHub.com
 
-4. Also, you should set `WEBHOOK` to allow telegram send POST requests to your app:
+4. Also, you supposed to set `WEBHOOK` to allow telegram send POST requests to your app:
 ```
 curl --location --request POST 'https://api.telegram.org/bot21440#####:AAELCMqXtbt9jKclUWVZj####SECRET####/setWebhook?url=https://1cd2-176-53-210-50.ngrok.io'
 ```

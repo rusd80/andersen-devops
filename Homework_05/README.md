@@ -12,6 +12,13 @@ Hints:
 ![dockerhub](https://i.imgur.com/h2G0lTW.png[/img])
 https://hub.docker.com/repository/docker/rusd80/devops
 
+This Docker image created using:
+- virtualenv
+- pyinstaller
+- upx
+- staticx
+- scratch as a final image
+
 То build locally: `docker build . -t rusd80/devops:tiny`
 To run: `docker run -it -p 8080:8080 rusd80/devops:tiny`
 

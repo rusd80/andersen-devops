@@ -13,5 +13,5 @@ Add. challenge:
 ```
 
 ### Results:
-1. Main task done with Amazon Web Services
-2. Main task done with Azure
+1. Main task done with Amazon Web Services.
+2. Main task done with Azure (using Application Gateway).

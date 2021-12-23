@@ -1,17 +1,17 @@
 ## Optional homework
 Create a script that uses aws cli or powershell.
 What this script should do:
-- Collect a list of EBS Snapshot Id, StartTime and size
-- Show a list of Snapshots that are older then N days or hours
+- Collect a list of EBS Snapshot Id's, StartTime and size
+- Show a list of Snapshots that are older than N days or hours
 - Optional: filter by Tag: Value
 - Optional: add option for copy selected Snapshot to S3
 - You can come up with your own case
 
 This task is done using AWS Lambda Function:
 - Collect a list of EBS Snapshot Id, StartTime and size
-- Show a list of Snapshots that are older then N days or hours
+- Show a list of Snapshots that are older than N days or hours
 
-Lambda function was created with AWS Console. Also lambda requires a special role.
+Lambda function was created with AWS Console. Also, lambda requires a special role.
 
 ### Command invoking lambda:
 ```

@@ -28,8 +28,22 @@ Command `awk` searches for lines with `Organization`
 - `ss` - is a tool that is used for displaying network socket related information on a Linux system. The tool displays
 more detailed information that the netstat command which is used for displaying active socket connections.
 
+### Tasks:
+- create README.md and describe how tu use your script
+- script parses PID or process name as argument
+- number of output lines supposed to be defined by user
+- script shows other connection states as defined by user (listening, established, wait)
+- script displays clear error messages
+- script doesn't depend on launch privileges, it displays a warning
+
+#### Optional tasks:
+
+- script displays the number of connections to each organization 
+- script allows you to get other data from the whois output
+- script can work with ss, uses other command-line utils
+
 ### Manual
-Download script and run it. You should specify process name or PID as the script argument. Run this script as root to see more details.
+Download `script.sh` and run it. You are supposed to specify process name or PID as the script argument. Run this script as root to see more details.
 
 usage:
 ./script.sh [options] <process>
@@ -48,8 +62,8 @@ Options:
 script.sh -n 10 -a -w -t chrome
 script.sh -n 7 zoom
 ```
-### Result:
-run `script.sh -n 10 -a -w -t chrome`
+### Result 1:
+run `sudo script.sh -n 10 -a -w -t chrome`
 ```
 | Number of connects |  Organization         [ Info ]                  | 
 +--------------------|--------------------------------------------------+
@@ -61,4 +75,34 @@ run `script.sh -n 10 -a -w -t chrome`
       1                 Facebook, Inc. (THEFA-3) | Facebook, Inc. | 1601 Willow Rd. | US | domain@facebook.com |
 
 ```
+### Result 2:
 
+run `sudo script.sh -n 6 chrome`
+```
++--------------------|--------------------------------------------------+
+| Number of connects |  Organization         [ Info ]                  | 
++--------------------|--------------------------------------------------+
+      6                 Yandex LLC Network Operations
+      4                 Google LLC
+      1                 SELECTEL-NOC
+      1                 RTB HOUSE Administrators
+      1                 Qrator Labs
+      1                 GitHub, Inc.
+```
+### Result 3:
+
+run `script.sh -n 6 chrome`
+```
+The script is run without root privileges. Some information can't be displayed
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
++--------------------|--------------------------------------------------+
+| Number of connects |  Organization         [ Info ]                  | 
++--------------------|--------------------------------------------------+
+     21                 Google LLC
+      6                 Yandex LLC Network Operations
+      1                 Vkontakte Network Control Center
+      1                 Twitter Inc.
+      1                 SELECTEL-NOC
+      1                 RIPE Network Coordination Centre Hetzner Online GmbH - Contact Role
+```

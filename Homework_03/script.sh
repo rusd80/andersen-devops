@@ -3,8 +3,7 @@
 # define "help" message
 help=$'
 usage:
-./script.sh [options] <process>
-
+./script.sh [options] <process>.
 Options:
 -n  <number>          number of lines to output,default value: 5
 -a                    all connections, default - only ESTABLISHED
@@ -24,7 +23,7 @@ $ ./script.sh -h or --help'
 # function returns IP`s, uses netstat or ss utility
 function get_ips(){
   # get connections with netstat
-  [ $tool == 'netstat' ] && local res=$(sudo netstat -tunapl | grep $state |awk -v pat=$1 '$0 ~pat {print $5}' | cut -d: -f1 | sort | uniq -c |
+  [ $tool == 'netstat' ] && local res=$(netstat -tunapl | grep $state |awk -v pat=$1 '$0 ~pat {print $5}' | cut -d: -f1 | sort | uniq -c |
 sort | grep -oP '(\d+\.){3}\d+' )
   # get connections with ss
   [ $tool == 'ss' ] && local res=$(ss -tunap | grep $state | awk -v pat=$1 '$0 ~pat {print $6}' | sort | uniq -c | grep -oP '(\d+\.){3}\d+' )
@@ -50,6 +49,12 @@ function print_frame(){
 }
 # return HELP message
 [[ $1 == '-h' || $1 == '--help' ]] && echo "$help" && exit 0
+
+# Check root privileges
+  if [[ $(id -u) != 0 ]]
+    then
+      echo "The script is run without root privileges. Some information can't be displayed"
+  fi
 
 # check utilities installed
 [ -z "$(which ss)" ] && err "Please install iproute2 package." && exit 2

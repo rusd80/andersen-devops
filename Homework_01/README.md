@@ -154,3 +154,17 @@ Route 53
 
 1. How to use azure file share
 2. File share can be mounted as a folder on linux VM
+
+21 dec 2021 TIL: 
+
+1. Create gitlab-runner server on GCP cloud.
+2. Launch linux command from .gitlab-ci.yml
+
+23 dec 2021 TIL:
+
+1. Basics about networking
+2. OSI 7-level stack
+
+24 dec 2021 TIL:
+
+1. How to use tag in Gitlab-ci pipelines

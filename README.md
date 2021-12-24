@@ -10,7 +10,7 @@ At now become DevOps engineer is my dream and challenge.
 ### Why am I interested in this course?:
 
 1. I would improve my skills and knowledge in DevOps instruments and philosophy; 
-2. Become an DevOps engineer is my goal;
+2. Become a DevOps engineer is my goal;
 3. It's cool, because Andersen is a top IT company.                                                              
 
 ### What do I expect from this course?:

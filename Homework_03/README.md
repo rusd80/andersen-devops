@@ -12,7 +12,7 @@ passed as a parameter to this script, connects. The process can be specified by 
 - `-u` or --udp - shows udp ports
 - `-n` shows network addresses as numbers, shows ports as numbers
 - `-a` shows the status of all sockets; normally, sockets used by server processes are not shown
-- `-p` displays the PID/Name of the process that created the socket
+- `-p` displays the PID/Name of the process that created a socket
 - `-l` or --listening - shows only the listening ports
 - `awk '/firefox/ {print $5}'`  - looks for lines containing `firefox` and outputs only the fifth column (ip+port), returns list of sockets
 - `cut -d: -f1` - cuts the ports, leaving only IP

@@ -49,11 +49,16 @@ usage:
 ./script.sh [options] <process>
 
 Options:
--n  <number>          number of lines to output, default value: 5
--a                    all connections, default - only `ESTABLISHED`
--w                    more information, default - only `ORGANIZATION` name
--t                    `ss`, default - `netstat`
-<process>             `PROCESS NAME OR PID` - name or PID of process to analyze its connections
+
+`-n  <number>`          number of lines to output, default value: 5
+
+`-a`                    all connections, default - only `ESTABLISHED`
+
+`-w`                    more information, default - only `ORGANIZATION` name
+
+`-t`                    use `ss`, default - `netstat`
+
+`<process>`           PROCESS NAME OR PID - `name` or `PID` of process to analyze its connections
 
 
 ### Usage example:

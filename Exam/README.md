@@ -39,3 +39,15 @@ time limit.
 
 This work is done using `Gitlab-CI`, `SonarQube`, `Telegram`, `AWS Elastic Kubernetes Service cluster`. 
 Results are presented on https://gitlab.com
+
+`Python-Flask` application `CI/CD`:
+https://gitlab.com/rusd80/flask_app
+
+`Python-Flask` application cloud `infrastructure`:
+https://gitlab.com/rusd80/exam_cluster_1
+
+`Golang` application `CI/CD`:
+https://gitlab.com/rusd80/go_app
+
+`Golang` application cloud `infrastructure`:
+https://gitlab.com/rusd80/exam_cluster_2

@@ -1,4 +1,4 @@
-##DevOps Exam
+# DevOps Exam
 
 #### Exam is presented as a self-performed laboratory work.
 
@@ -37,4 +37,5 @@ time limit.
 - Check automated tests result
 - Write README.md
 
-This work is done using Gitlab-CI, SonarQube, Telegram, AWS Elastic Kubernetes Service cluster. Results are presented on Gitlab.com
+This work is done using Gitlab-CI, SonarQube, Telegram, AWS Elastic Kubernetes Service cluster. 
+Results are presented on https://gitlab.com

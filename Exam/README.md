@@ -19,7 +19,7 @@ Ci / CD, VCS, Registry, Infrasructure.
 ###Result:
 - Working lab that you can demonstrate.
 - 20 min presentation.
-- The presentation should contain 2 diagrams: how the Ci / CD process works in
+- Presentation should contain 2 diagrams: how the Ci / CD process works in
 your decision
 - How would you build it in an ideal world and without 
 time limit.
@@ -29,13 +29,13 @@ time limit.
 - Code check with an analyzer such as snyk, sonarqube, linter, etc.
 - Notification based on results (Telegram bot)
 - Automatic pipeline launch on commit / merge request
-- If you are using compiled and non-compiled PL
+- Using compiled and non-compiled PL
 - Secret management
 - Pipeline as code
 - Docker registry container policy (scheduled deletions, etc.)
-- Use logging service
-- Check automated tests result
-- Write README.md
+- Logging service
+- Automated tests result checking
+- README.md
 
 This work is done using Gitlab-CI, SonarQube, Telegram, AWS Elastic Kubernetes Service cluster. 
 Results are presented on https://gitlab.com

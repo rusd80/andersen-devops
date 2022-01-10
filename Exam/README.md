@@ -37,7 +37,7 @@ time limit.
 - Automated tests result checking
 - README.md
 
-This work is done using `Gitlab-CI`, `SonarQube`, `Telegram`, `AWS Elastic Kubernetes Service cluster`. 
+This work is done using `Gitlab-CI`, `SonarQube`, `Terraform`, `AWS Elastic Kubernetes Service cluster`. 
 Results are presented on https://gitlab.com
 
 `Python-Flask application CI/CD`:

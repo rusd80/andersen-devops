@@ -5,7 +5,7 @@ of experience with programming of programmable-logic controllers
 and human-machine interface devices. I'm interested in computer science,
 programming and management methodologies such as LEAN and Kanban.
 I'm currently learning Linux administration, AWS, Azure and Kubernetes.
-At now become a DevOps engineer is my dream and challenge. 
+At now become a DevOps engineer is my challenge. 
 
 ### How to reach me:
 
